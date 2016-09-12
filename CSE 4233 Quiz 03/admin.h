@@ -17,6 +17,7 @@ class Admin {
 public:
     void writeToStorage();
     void readFromStorage();
+    void hey();
     
     int suuuhhhhduuuuddd();
 };
