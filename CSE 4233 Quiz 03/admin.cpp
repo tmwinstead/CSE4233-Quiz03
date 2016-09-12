@@ -7,19 +7,22 @@
 //
 
 // Last editor: zak35
-//database includes users, carts, and inventory
 
 #include "admin.h"
-#include "sqlite3.h"
+#include "database.h"
 
 void writeToStorage(){
-  sqlite3_open();
-  
-  sqlite3_close();
+  updateUser();
+  updateUserCart();
+  updateCartItem();
+  updateItem();
+  updateInventory();
 }
 
 void readFromStorage(){
-  sqlite3_open();
-  
-  sqlite3_close();
-}
+  getUser();
+  getUserCart();
+  getCartItem();
+  getItem();
+  getInventory();
+ }
