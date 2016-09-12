@@ -9,8 +9,6 @@
 #ifndef USER_H
 #define USER_H
 
-#include "cart.h"
-
 #include <iostream>
 #include <string>
 
@@ -19,8 +17,10 @@ using namespace std;
 class User {
 public:
     string username;
-    Cart getHistory(int num);
     string login(string username);
+    
+    User(string userID);
+    ~User();
     void logout();
     
 };
