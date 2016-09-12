@@ -6,4 +6,20 @@
 //  Copyright © 2016 Tyler Winstead. All rights reserved.
 //
 
+// Last editor: zak35
+//database includes users, carts, and inventory
+
 #include "admin.h"
+#include "sqlite3.h"
+
+void writeToStorage(){
+  sqlite3_open();
+  
+  sqlite3_close();
+}
+
+void readFromStorage(){
+  sqlite3_open();
+  
+  sqlite3_close();
+}
