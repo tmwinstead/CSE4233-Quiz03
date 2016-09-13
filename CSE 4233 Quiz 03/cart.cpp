@@ -50,7 +50,7 @@ Cart::~Cart() {
 
 //  Adds an item to the cart
 void Cart::addToCart(int itemID, int quantity) {
-    Item *item = new Item;
+    Item *item = new Item(0);
     item->itemID = itemID;
     
     //  SQL to lookup item and populate item object data fields
