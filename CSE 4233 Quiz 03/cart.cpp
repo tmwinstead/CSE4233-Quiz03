@@ -16,7 +16,7 @@ Cart::Cart() {
     numItems = 0;
 }
 
-//  Builds a new cart with no items
+//  Builds a new cart for a user
 Cart::Cart(User user) {
     username = user.username;
     
@@ -43,9 +43,11 @@ Cart::Cart(User user, int cartID) {
 Cart::~Cart() {
     username = "";
     uniqueID = 0;
-    numItems = 0;
-    itemList.clear();
-    itemQuantities.clear();
+    if (numItems > 0) {
+        itemList.erase(itemList.begin()+numItems-1);
+        itemQuantities.erase(itemQuantities.begin()+numItems-1);
+        numItems = 0;
+    }
 }
 
 //  Adds an item to the cart
@@ -87,9 +89,10 @@ void Cart::removeFromCart(Item item, int quantity) {
     for (int i=0; i < itemList.size(); i++) {
         if (item.itemID == itemList.at(i).itemID) {
             if (itemQuantities.at(i)-quantity < 0) {
-                itemQuantities.at(i) = 0;
+                itemList.erase(itemList.begin()+i);
+                itemQuantities.erase(itemQuantities.begin()+i);
             }
-            else itemQuantities.at(i)-=1;
+            else itemQuantities.at(i) -= quantity;
             break;
         }
     }
@@ -99,4 +102,13 @@ void Cart::removeFromCart(Item item, int quantity) {
 void Cart::goToCheckout() {
     Checkout *checkout = new Checkout();
     checkout->submitOrder(username, uniqueID);
+}
+
+//  Returns the current value of a cart
+float Cart::getTotal() {
+    float total=0;
+    for (int i=0; i < itemList.size(); i++) {
+        total += itemList.at(i).cost*itemQuantities.at(i);
+    }
+    return total;
 }
