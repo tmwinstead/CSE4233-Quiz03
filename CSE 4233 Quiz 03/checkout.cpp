@@ -33,18 +33,28 @@ void Checkout::addShippingAddress() {
 }
 
 //  Updates the inventory at the end of checkout
-string Checkout::updateInventory() {
+bool Checkout::updateInventory(Cart cart) {
+    bool purchaseSuccess = true;
     
     //  SQL to update the inventory
+    //  Cout inventory of each purchased item before and after update
     //  If inventory update is successful, return purchase successful
     //  If inventory update fails, return purchase unsuccessful
+    //  Change purchaseSuccess to false if fail
     
-    return "Purchase successful";
+    return purchaseSuccess;
 }
 
 //  Calls the private methods for completing a checkout
-void Checkout::submitOrder(string username, int uniqueID) {
+void Checkout::submitOrder(Cart cart) {
     addCardNumber();
     addShippingAddress();
-    updateInventory();
+    bool purchaseSuccess = updateInventory(cart);
+    
+    cout << "\n\nUser: " + cart.username;
+    cout << "\nCard Number: ";
+    cout << cardNumber;
+    cout << "\nShipping Address: " + shippingAddress;
+    if (purchaseSuccess) cout << "\nPurchase successful";
+    else cout << "\nPurchase failed";
 }

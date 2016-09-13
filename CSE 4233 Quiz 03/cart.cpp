@@ -101,7 +101,7 @@ void Cart::removeFromCart(Item item, int quantity) {
 //  Creates a checkout object and starts the checkout process
 void Cart::goToCheckout() {
     Checkout *checkout = new Checkout();
-    checkout->submitOrder(username, uniqueID);
+    checkout->submitOrder(*this);
 }
 
 //  Returns the current value of a cart
