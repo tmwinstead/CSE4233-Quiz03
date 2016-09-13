@@ -13,7 +13,7 @@
 
 using namespace std;
 
-class Admin{
+class Admin {
 public:
   void writeToStorage();
   void readFromStorage();

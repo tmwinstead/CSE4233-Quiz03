@@ -13,18 +13,18 @@
 
 using namespace std;
 
-class Database{
+class Database {
 public:
-    void getUser;
-    void getUserCart;
-    void getCartItem;
-    void getItem;
-    void getInventory;
-    void updateUser;
-    void updateUserCart;
-    void updateCartItem;
-    void updateItem;
-    void updateInventory;
+    void getUser();
+    void getUserCart();
+    void getCartItem();
+    void getItem();
+    void getInventory();
+    void updateUser();
+    void updateUserCart();
+    void updateCartItem();
+    void updateItem();
+    void updateInventory();
 };
 
 #endif
