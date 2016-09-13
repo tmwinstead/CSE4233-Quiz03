@@ -231,14 +231,30 @@ void historyMenu(int page){
                 historyMenu(page);
                 break;
             }
+            cout << "" << endl;
             detailHistoryMenu(historyCarts.at(choice-2));
+            historyMenu(page);
             break;
     }
 }
 
 void detailHistoryMenu(int cartID){
     Cart historyCart = Cart(user, cartID);
+    cout << "Cart Hisotory" << endl;
+    cout << "Cart #" << cartID << endl;
+    cout << "  Number of items: " << historyCart.numItems << endl;
+    cout << "  Total cost: $" << fixed << setprecision(2) << historyCart.getTotal() << endl;
+    for (int i=0; i<historyCart.itemList.size(); i++){
+        cout << "    " << historyCart.itemList.at(i).itemName;
+        cout << " (" << historyCart.itemQuantities.at(i) << ") @ $";
+        cout << fixed << setprecision(2) << historyCart.itemList.at(i).cost << " each = ";
+        cout << fixed << setprecision(2) << historyCart.itemList.at(i).cost*historyCart.itemQuantities.at(i) << endl;
+    }
     
+    int nothing;
+    cout << "Press Enter to return to cart history. ";
+    cin >> nothing;
+    cout << endl;
 }
 
 bool mainMenu(){
@@ -301,13 +317,6 @@ int main(int argc, const char * argv[])
         cout << "usage " << argv[0] << " username\n" << endl;
         return 0;
     }
-    
-    // SQL get the username here, check if it is valid, then check to see if cart is active
-    /*
-     sqlLine = "SELECT"
-    returnLine = readDatabase(sqlLine)
-    writeDatabase(sqLine)
-     */
     
     user = User(argv[1]);
     cart = Cart(user);
