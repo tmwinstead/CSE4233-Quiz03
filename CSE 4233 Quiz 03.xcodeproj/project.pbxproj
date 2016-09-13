@@ -89,14 +89,14 @@
 		2FA79B871D86F72500BEEB3A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				BFCFE2891D879046002D7E15 /* database.cpp */,
-				BFCFE28A1D879046002D7E15 /* database.h */,
 				2FE8532E1D871E93005AB2B6 /* admin.h */,
 				2FA79B881D870EE700BEEB3A /* admin.cpp */,
 				2F6606CF1D8637F60098E3E7 /* cart.h */,
 				2F6606CE1D8637F60098E3E7 /* cart.cpp */,
 				2FA79B8C1D870FD300BEEB3A /* checkout.h */,
 				2FA79B8B1D870FD300BEEB3A /* checkout.cpp */,
+				BFCFE28A1D879046002D7E15 /* database.h */,
+				BFCFE2891D879046002D7E15 /* database.cpp */,
 				2FA79B8F1D87126300BEEB3A /* inventory.h */,
 				2FA79B8E1D87126300BEEB3A /* inventory.cpp */,
 				2FA79B851D86F6FD00BEEB3A /* item.h */,
