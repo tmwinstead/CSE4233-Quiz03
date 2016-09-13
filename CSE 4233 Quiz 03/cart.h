@@ -26,6 +26,7 @@ public:
     vector<int> itemQuantities;
     int numItems;
     
+    Cart();
     Cart(User user);
     Cart(User user, int cartID);
     ~Cart();

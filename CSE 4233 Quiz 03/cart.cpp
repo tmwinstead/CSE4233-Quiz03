@@ -8,6 +8,13 @@
 
 #include "cart.h"
 
+//  Builds an empty cart with variables initialized
+Cart::Cart() {
+    username = "";
+    uniqueID = 0;
+    numItems = 0;
+}
+
 //  Builds a new cart with no items
 Cart::Cart(User user) {
     username = user.username;

@@ -8,6 +8,11 @@
 
 #include "user.h"
 
+//  Creates an empty user and initializes variables
+User::User() {
+    username = "";
+}
+
 //  Creates a new user
 User::User(string userID) {
     
