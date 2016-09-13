@@ -16,12 +16,14 @@ using namespace std;
 
 class Item {
 public:
-    int cost;
     int itemID;
-    string itemName;
     int stockQuantity;
+    int cost;
+    string itemName;
     string category;
-
+    
+    Item();
+    ~Item();
     bool inInventory();
 };
 

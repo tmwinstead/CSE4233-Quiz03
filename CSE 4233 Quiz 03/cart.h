@@ -6,28 +6,33 @@
 //  Copyright © 2016 Tyler Winstead. All rights reserved.
 //
 
-#ifndef cart_hpp
-#define cart_hpp
+#ifndef CART_H
+#define CART_H
 
 #include "item.h"
 #include "user.h"
 
 #include <iostream>
+#include <vector>
+#include <string>
+
 using namespace std;
 
 class Cart {
 public:
-    int numItems;
-    int itemList[0];
-    int itemQuantities[0];
-    int itemPrices;
-    int calculatedTotal;
+    string username;
     int uniqueID;
-    User user;
+    vector<Item> itemList;
+    vector<int> itemQuantities;
+    int numItems;
     
-    void addToCart(Item item, int quantity);
+    Cart(User user);
+    Cart(User user, int cartID);
+    ~Cart();
+    void addToCart(int itemID, int quantity);
     void removeFromCart(Item item, int quantity);
-    void goToCheckout(Cart cart);
+    void goToCheckout(User user, Cart cart);
+    float getTotal(Cart cart);
 };
 
 #endif

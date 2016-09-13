@@ -10,7 +10,6 @@
 #define CHECKOUT_H
 
 #include "cart.h"
-#include "user.h"
 
 #include <iostream>
 #include <string>
@@ -19,10 +18,8 @@ using namespace std;
 
 class Checkout {
 public:
-    Cart cart;
-    string shippingAddress;
     int cardNumber;
-    User user;
+    string shippingAddress;
     
     void submitOrder(Cart cart);
     void updateInventory();
