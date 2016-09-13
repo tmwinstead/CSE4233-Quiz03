@@ -171,6 +171,7 @@
 				2FE853311D8773B5005AB2B6 /* database.cpp in Sources */,
 				2FA79B901D87126300BEEB3A /* inventory.cpp in Sources */,
 				2FA79B8D1D870FD300BEEB3A /* checkout.cpp in Sources */,
+				BFCFE2881D872FAC002D7E15 /* quiz3.cpp in Sources */,
 				2FA79B861D86F6FD00BEEB3A /* item.cpp in Sources */,
 				2FA79B8A1D870EE700BEEB3A /* admin.cpp in Sources */,
 			);
