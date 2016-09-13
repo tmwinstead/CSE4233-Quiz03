@@ -15,16 +15,16 @@ using namespace std;
 
 class Database {
 public:
-    void getUser();
-    void getUserCart();
-    void getCartItem();
-    void getItem();
-    void getInventory();
-    void updateUser();
-    void updateUserCart();
-    void updateCartItem();
-    void updateItem();
-    void updateInventory();
+  static int callback(void *NotUsed, int argc, char **argv, char **azColName);
+  void getUser(string username);
+  void getItem(string itemName);
+  void getItem(int userID);
+  void getCart(string username);
+  void updateUser();
+  void updateUserCart();
+  void updateCartItem();
+  void updateItem();
+  void updateInventory();
 };
 
 #endif

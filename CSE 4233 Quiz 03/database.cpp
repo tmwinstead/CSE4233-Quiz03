@@ -10,45 +10,111 @@
 #include "sqlite3.h"
 #include <string>
 #include <iostream>
+#include <vector>
+#include <tuple>
+#include <sstream>
 
 using namespace std;
 
-void getUser(string username) {
+Database::Database() {
   sqlite3 *db;
-
-  sqlite3_open();
-  //WIP for all these methods, gotta figure out the tutorial
-  sqlite3_close(db);
+  db = "quiz3.db";
+  
+  //This will create a database if it doesn't exist.
+  sqlite_open(db);
+  //Check to see if connection was successful
+  if (!SQLITE_OK) {
+    printf("Connection established.\n");
+  }
+  sqlite_close(db);
 }
 
-void getItem(string itemName) {
-  sqlite3 *db;
 
-  sqlite3_open();
-
-  sqlite3_close(db);
+//Taken from www.sqlite.org/quickstart.html, as it is needed for sqlite_exec().
+static int Database::callback(void *NotUsed, int argc, char **argv, char **azColName) {
+  int i;
+  for (i = 0; i<argc; i++) {
+    printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+  }
+  printf("\n");
+  return 0;
 }
 
-void getItem(int itemID) {
+Database::getUser(string username) {
   sqlite3 *db;
 
-  sqlite3_open();
+  sqlite3_open(db, );
+
+  
+  
+  sqlite3_close(db);
+
+  return username;
+}
+
+Database::getItem(int itemID) {
+  sqlite3 *db;
+
+  //This converts itemID into a string to concatenate onto the sql statement.
+  string itemUID;
+  ostringstream convert;
+  convert << itemID;
+  itemUID = convert.str();
+  //********************//
+
+  int sqlCmdNum;
+  tuple<int, float, string, string> itemInfo;
+  string sql;
+
+  sqlite3_open(db, &db);
+  
+  //Iterate through each column of the table and place the data in a vector to return to the Item class.
+  for (int i = 0; i < 4; i++) {
+    sqlCmdNum = i;
+    switch sqlCmdNum{
+    case 0:
+      sql = "SELECT stockQuantity FROM item WHERE item.itemID = " + itemUID;
+      get<i>(itemInfo) = sqlite3_exec(db, sql, callback, 0, "");
+      break;
+    case 1:
+      sql = "SELECT cost FROM item WHERE item.itemID = " + itemUID;
+      get<i>(itemInfo) = sqlite3_exec(db, sql, callback, 0, "");
+      break;
+    case 2:
+      sql = "SELECT itemName FROM item WHERE item.itemID = " + itemUID;
+      get<i>(itemInfo) = sqlite3_exec(db, sql, callback, 0, "");
+      break;
+    case 3:
+      sql = "SELECT category FROM item WHERE item.itemID = " + itemUID;
+      get<i>(itemInfo) = sqlite3_exec(db, sql, callback, 0, "");
+      break;
+
+    default:
+      sql_close(db);
+      break;
+    }
+  }
 
   sqlite3_close(db);
 
+  return itemInfo;
 }
 
-void getCart(string username) {
+Database::getCart(string username) {
   sqlite3 *db;
 
-  sqlite3_open();
+  sqlite3_open(db);
+
+  while (!SQLITE_OK) {
+    //add stuff here
+  }
 
   sqlite3_close(db);
 
   return //array of cart nums
 }
 
-void getInventory() {
+Database::getInventory() {
   sqlite3 *db;
 
   sqlite3_open();
@@ -56,7 +122,7 @@ void getInventory() {
   sqlite3_close(db);
 }
 
-void updateUser(string username) {
+Database::updateUser(string username) {
   sqlite3 *db;
 
   sqlite3_open();
@@ -64,7 +130,7 @@ void updateUser(string username) {
   sqlite3_close(db);
 }
 
-void updateItem(string itemName) {
+Database::updateItem(string itemName) {
   sqlite3 *db;
 
   sqlite3_open();
@@ -72,7 +138,7 @@ void updateItem(string itemName) {
   sqlite3_close(db);
 }
 
-void updateItem(int itemID) {
+Database::updateItem(int itemID) {
   sqlite3 *db;
 
   sqlite3_open();
@@ -80,7 +146,7 @@ void updateItem(int itemID) {
   sqlite3_close(db);
 }
 
-void updateInventory() {
+Database::updateInventory() {
   sqlite3 *db;
 
   sqlite3_open();
