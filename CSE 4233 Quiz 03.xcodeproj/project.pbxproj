@@ -78,7 +78,7 @@
 		2F6606C31D8633EB0098E3E7 /* CSE 4233 Quiz 03 */ = {
 			isa = PBXGroup;
 			children = (
-				BFCFE2871D872FAC002D7E15 /* quiz3.cpp */,
+				2FE853331D87910C005AB2B6 /* quiz3.cpp */,
 				2FA79B871D86F72500BEEB3A /* Classes */,
 			);
 			path = "CSE 4233 Quiz 03";
@@ -91,16 +91,19 @@
 				BFCFE28A1D879046002D7E15 /* database.h */,
 				2FA79B881D870EE700BEEB3A /* admin.cpp */,
 				2FE8532E1D871E93005AB2B6 /* admin.h */,
-				2F6606CE1D8637F60098E3E7 /* cart.cpp */,
+				2FA79B881D870EE700BEEB3A /* admin.cpp */,
 				2F6606CF1D8637F60098E3E7 /* cart.h */,
-				2FA79B8B1D870FD300BEEB3A /* checkout.cpp */,
+				2F6606CE1D8637F60098E3E7 /* cart.cpp */,
 				2FA79B8C1D870FD300BEEB3A /* checkout.h */,
-				2FA79B8E1D87126300BEEB3A /* inventory.cpp */,
+				2FA79B8B1D870FD300BEEB3A /* checkout.cpp */,
+				2FE853321D8773C0005AB2B6 /* database.h */,
+				2FE853301D8773B5005AB2B6 /* database.cpp */,
 				2FA79B8F1D87126300BEEB3A /* inventory.h */,
-				2FA79B841D86F6FD00BEEB3A /* item.cpp */,
+				2FA79B8E1D87126300BEEB3A /* inventory.cpp */,
 				2FA79B851D86F6FD00BEEB3A /* item.h */,
-				2F6606CB1D8634B10098E3E7 /* user.cpp */,
+				2FA79B841D86F6FD00BEEB3A /* item.cpp */,
 				2F6606CC1D8634B10098E3E7 /* user.h */,
+				2F6606CB1D8634B10098E3E7 /* user.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -166,8 +169,9 @@
 				BFCFE28B1D879046002D7E15 /* database.cpp in Sources */,
 				2FA79B901D87126300BEEB3A /* inventory.cpp in Sources */,
 				2FA79B8D1D870FD300BEEB3A /* checkout.cpp in Sources */,
-				BFCFE2881D872FAC002D7E15 /* quiz3.cpp in Sources */,
+				BFCFE2881D872FAC002D7E15 /* (null) in Sources */,
 				2FA79B861D86F6FD00BEEB3A /* item.cpp in Sources */,
+				2FE853341D87910C005AB2B6 /* quiz3.cpp in Sources */,
 				2FA79B8A1D870EE700BEEB3A /* admin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

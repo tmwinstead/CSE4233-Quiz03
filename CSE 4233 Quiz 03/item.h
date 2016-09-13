@@ -18,11 +18,11 @@ class Item {
 public:
     int itemID;
     int stockQuantity;
-    int cost;
+    float cost;
     string itemName;
     string category;
     
-    Item();
+    Item(int itemNum);
     ~Item();
     bool inInventory();
 };

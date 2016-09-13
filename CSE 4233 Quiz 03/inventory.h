@@ -1,3 +1,4 @@
+/*
 //
 //  inventory.h
 //  CSE 4233 Quiz 03
@@ -8,7 +9,7 @@
 
 #ifndef INVENTORY_H
 #define INVENTORY_H
-/*
+
 #include "item.h"
 
 #include <iostream>
@@ -20,6 +21,7 @@ public:
     Item[0] stock;
     
     void updateItemInventory(Item[0] item);
-};*/
+};
 
 #endif
+*/

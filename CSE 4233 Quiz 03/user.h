@@ -11,16 +11,19 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 class User {
 public:
     string username;
-    string login(string username);
     
+    User();
     User(string userID);
     ~User();
+    vector<int> getHistory();
+    string login(string username);
     void logout();
     
 };

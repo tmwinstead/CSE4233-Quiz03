@@ -11,7 +11,7 @@
 #include "admin.h"
 #include "database.h"
 
-void writeToStorage(){
+void writeToStorage() {
   updateUser();
   updateUserCart();
   updateCartItem();
@@ -19,7 +19,7 @@ void writeToStorage(){
   updateInventory();
 }
 
-void readFromStorage(){
+void readFromStorage() {
   getUser();
   getUserCart();
   getCartItem();

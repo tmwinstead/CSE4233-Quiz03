@@ -7,6 +7,14 @@
 //
 
 #include "cart.h"
+#include "checkout.h"
+
+//  Builds an empty cart with variables initialized
+Cart::Cart() {
+    username = "";
+    uniqueID = 0;
+    numItems = 0;
+}
 
 //  Builds a new cart with no items
 Cart::Cart(User user) {
@@ -31,7 +39,7 @@ Cart::Cart(User user, int cartID) {
     //  --> numItems (a count of number of different items)
 }
 
-//  Resets a cart object but does not remove from DB
+//  Resets a cart object's variables but does not remove from DB
 Cart::~Cart() {
     username = "";
     uniqueID = 0;
@@ -87,34 +95,8 @@ void Cart::removeFromCart(Item item, int quantity) {
     }
 }
 
-/*
 //  Creates a checkout object and starts the checkout process
-void Cart::goToCheckout(User user, Cart cart) {
-    
-}*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void Cart::goToCheckout() {
+    Checkout *checkout = new Checkout();
+    checkout->submitOrder(username, uniqueID);
+}

@@ -17,14 +17,18 @@
 using namespace std;
 
 class Checkout {
+private:
+    string updateInventory();
+    void addCardNumber();
+    void addShippingAddress();
+    
 public:
     int cardNumber;
     string shippingAddress;
     
-    void submitOrder(Cart cart);
-    void updateInventory();
-    void addCardNumber(int cardNumber);
-    void addShippingAddress(string shippingAddress);
+    Checkout();
+    ~Checkout();
+    void submitOrder(string username, int uniqueID);
 };
 
 #endif
