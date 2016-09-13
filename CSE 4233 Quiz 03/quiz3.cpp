@@ -21,13 +21,13 @@
 
 using namespace std;
 
-Cart cart;
-User user;
-
 bool mainMenu();
 void cartMenu(int page);
 void historyMenu(int page);
+vector<int> getHistory(string username, int start);
 
+User user;
+Cart cart;
 
 void inventoryMenu(string name, int page){
     cout << "" << endl;
@@ -42,13 +42,10 @@ void inventoryMenu(string name, int page){
     cout << "  2. View Cart (" << numItems << ") $";
     cout << fixed << setprecision(2) << totalPrice << endl;
     
-    // SQL to get each item and price
-    vector<int> items = getItems(name, page*7);
-    vector<string> itemNames = getItemNames(items);
-    vector<float> prices = getPrice(items);
+    vector<Item> items = getItems(name, page*7);
     
     for (int i=0; i<7 || i<items.size(); i++){
-        cout << "  " << i+3 << ". " << itemNames.at(i) << " ($" << prices.at(i) << ")" << endl;
+        cout << "  " << i+3 << ". " << items.at(i).itemName << " ($" << items.at(i).cost << ")" << endl;
     };
     
     bool loop = true;
@@ -78,7 +75,7 @@ void inventoryMenu(string name, int page){
                 cout << "Input qunatity: ";
                 cin >> quantity;
                 if (int(quantity) == quantity)
-                    loop = false;
+                    thisLoop = false;
             };
             cart.addToCart(items.at(choice-3), quantity);
             break;
@@ -87,13 +84,12 @@ void inventoryMenu(string name, int page){
 }
 
 void cartMenu(int page){
-    vector<Item> items;
-    //= cart.itemList;
+    vector<Item> items = cart.itemList;
     
     cout << "" << endl;
-    cout << "Cart" << endl;
+    cout << "Cart #" << cart.uniqueID <<endl;
     cout << "Number of items: " << items.size();
-    cout << "Total cost: " << fixed << setprecision(2) << cart.calculatedTotal << endl;
+    cout << "Total cost: $" << fixed << setprecision(2) << cart.calculatedTotal << endl;
     cout << "Page " << page+1 << endl;
     cout << "Type in the number then you can remove from or add more to add to your cart.";
     cout << "  0. Back" << endl;
@@ -104,14 +100,125 @@ void cartMenu(int page){
     // SQL to get each item and price
     
     for (int i=0; i<7 || i<items.size()-page*7; i++){
-        cout << "  " << i+3 << ". " << items.at(i+page*7).itemName << " (" << cart.itemQuantities.at(i+page*7) << ") ($" << items.at(i+page*7).cost << ")" <<endl;
+        cout << "  " << i+3 << ". " << items.at(i+page*7).itemName << " (" << cart.itemQuantities.at(i+page*7) << ") ($" << items.at(i+page*7).cost*cart.itemQuantities.at(i+page*7) << ")" <<endl;
     };
     
+    bool loop = true;
+    int choice = 0;
+    while (loop){
+        cout << "Input choice: ";
+        cin >> choice;
+        if (int(choice) == choice)
+            loop = false;
+    };
+    switch (choice) {
+        case 0:
+            break;
+            
+        case 1:
+            cartMenu(page+1);
+            break;
+            
+        case 2:
+            cart.goToCheckout();
+            break;
+            
+        default:
+            bool thisLoop = true;
+            bool loop2 = true;
+            int quantity = 0;
+            int thisChoice;
+            cout << "" << endl;
+            cout << "1. Add quantity" << endl;
+            cout << "2. Remove quantity" << endl;
+            while (thisLoop){
+                cout << "Input choice: ";
+                cin >> thisChoice;
+                if (int(thisChoice) == thisChoice){
+                    thisLoop = false;
+                    while(loop2){
+                        cout << "Input quantity: ";
+                        cin >> quantity;
+                    }
+                }
+            };
+            if (thisChoice==1)
+                cart.addToCart(items.at(choice-3), quantity);
+            else if(thisChoice==2)
+                cart.removeFromCart(items.at(choice-3), quantity);
+            break;
+    }
 }
 
 
 void historyMenu(int page){
+    vector<int> historyCarts = getHistory(user.username, page*8)
+    cout << "" << endl;
+    cout << "Cart History" << endl;
+    cout << "Page " << page+1 << endl;
+    cout << "Type in the number then you can remove from or add more to add to your cart.";
+    cout << "  0. Back" << endl;
+    cout << "  1. Next Page" << endl;
     
+    cout << "  2. Checkout" << endl;
+    
+    // SQL to get each item and price
+    
+    for (int i=0; i<8 || i<items.size()-page*8; i++){
+        cout << "  " << i+3 << ". Cart #" << historyCarts.at(i+page*8) << endl;
+    };
+    
+    bool loop = true;
+    int choice = 0;
+    while (loop){
+        cout << "Input choice: ";
+        cin >> choice;
+        if (int(choice) == choice)
+            loop = false;
+    };
+    switch (choice) {
+        case 0:
+            break;
+            
+        case 1:
+            cartMenu(page+1);
+            break;
+            
+        case 2:
+            cart.goToCheckout();
+            break;
+            
+        default:
+            bool thisLoop = true;
+            bool loop2 = true;
+            int quantity = 0;
+            int thisChoice;
+            cout << "" << endl;
+            cout << "1. Add quantity" << endl;
+            cout << "2. Remove quantity" << endl;
+            while (thisLoop){
+                cout << "Input choice: ";
+                cin >> thisChoice;
+                if (int(thisChoice) == thisChoice){
+                    thisLoop = false;
+                    while(loop2){
+                        cout << "Input quantity: ";
+                        cin >> quantity;
+                    }
+                }
+            };
+            if (thisChoice==1)
+                cart.addToCart(items.at(choice-3), quantity);
+            else if(thisChoice==2)
+                cart.removeFromCart(items.at(choice-3), quantity);
+            break;
+    }
+}
+
+vector<int> getHistory(string username, int start){
+    vector<int> history;
+    
+    return history;
 }
 
 bool mainMenu(){
@@ -136,7 +243,7 @@ bool mainMenu(){
     };
     switch (choice) {
         case 1:
-            historyMenu();
+            historyMenu(0);
             break;
             
         case 2:
@@ -181,6 +288,10 @@ int main(int argc, const char * argv[])
     returnLine = readDatabase(sqlLine)
     writeDatabase(sqLine)
      */
+    
+    user = User(argv[1]);
+    cart = Cart(user);
+    
     bool keepGoing = true;
     while(keepGoing){
         keepGoing = mainMenu();
