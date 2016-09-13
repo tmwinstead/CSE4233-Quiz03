@@ -38,7 +38,7 @@ string User::login(string userID) {
 }
 
 //  Creates cart from history after lookup via passed User ID
-/*Cart User::getHistory(int num) {
+/*Cart User::getHistory() {
     Cart *cart = new Cart(num);
     return cart;
 }

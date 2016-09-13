@@ -32,8 +32,8 @@ public:
     ~Cart();
     void addToCart(int itemID, int quantity);
     void removeFromCart(Item item, int quantity);
-    void goToCheckout(User user, Cart cart);
-    float getTotal(Cart cart);
+    void goToCheckout();
+    float getTotal();
 };
 
 #endif

@@ -7,3 +7,27 @@
 //
 
 #include "checkout.h"
+
+Checkout::Checkout() {
+    cardNumber = 0;
+    shippingAddress = "";
+}
+
+Checkout::~Checkout() {
+    cardNumber = 0;
+    shippingAddress = "";
+}
+
+void Checkout::addCardNumber() {
+    cout << "\n\nEnter your card number: ";
+    cin >> cardNumber;
+}
+
+void Checkout::addShippingAddress() {
+    cout << "\n\nEnter your shipping address: ";
+    cin >> shippingAddress;
+}
+
+void Checkout::updateInventory() {
+    
+}

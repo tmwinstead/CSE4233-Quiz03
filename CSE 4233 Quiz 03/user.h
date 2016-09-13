@@ -21,6 +21,7 @@ public:
     User();
     User(string userID);
     ~User();
+    getHistory();
     string login(string username);
     void logout();
     

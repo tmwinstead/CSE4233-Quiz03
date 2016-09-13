@@ -7,6 +7,7 @@
 //
 
 #include "cart.h"
+#include "checkout.h"
 
 //  Builds an empty cart with variables initialized
 Cart::Cart() {
@@ -94,11 +95,12 @@ void Cart::removeFromCart(Item item, int quantity) {
     }
 }
 
-/*
 //  Creates a checkout object and starts the checkout process
-void Cart::goToCheckout(User user, Cart cart) {
-    
-}*/
+void Cart::goToCheckout() {
+    Checkout *checkout = new Checkout();
+    checkout->addCardNumber();
+    checkout->addShippingAddress();
+}
 
 
 
