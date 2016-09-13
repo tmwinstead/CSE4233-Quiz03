@@ -7,3 +7,46 @@
 //
 
 #include "database.h"
+#include "sqlite3.h"
+
+using namespace std;
+
+void getUser() {
+
+}
+
+void getUserCart() {
+
+}
+
+void getCartItem() {
+
+}
+
+void getItem() {
+
+}
+
+void getInventory() {
+
+}
+
+void updateUser() {
+
+}
+
+void updateUserCart() {
+
+}
+
+void updateCartItem() {
+
+}
+
+void updateItem() {
+
+}
+
+void updateInventory() {
+
+}
