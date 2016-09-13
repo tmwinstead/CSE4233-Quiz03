@@ -39,7 +39,7 @@ Cart::Cart(User user, int cartID) {
     //  --> numItems (a count of number of different items)
 }
 
-//  Resets a cart object but does not remove from DB
+//  Resets a cart object's variables but does not remove from DB
 Cart::~Cart() {
     username = "";
     uniqueID = 0;
@@ -98,32 +98,5 @@ void Cart::removeFromCart(Item item, int quantity) {
 //  Creates a checkout object and starts the checkout process
 void Cart::goToCheckout() {
     Checkout *checkout = new Checkout();
-    checkout->addCardNumber();
-    checkout->addShippingAddress();
+    checkout->submitOrder(username, uniqueID);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

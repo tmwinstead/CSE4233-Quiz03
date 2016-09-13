@@ -19,6 +19,8 @@ using namespace std;
 class Checkout {
 private:
     string updateInventory();
+    void addCardNumber();
+    void addShippingAddress();
     
 public:
     int cardNumber;
@@ -26,9 +28,7 @@ public:
     
     Checkout();
     ~Checkout();
-    void submitOrder(Cart cart);
-    void addCardNumber();
-    void addShippingAddress();
+    void submitOrder(string username, int uniqueID);
 };
 
 #endif

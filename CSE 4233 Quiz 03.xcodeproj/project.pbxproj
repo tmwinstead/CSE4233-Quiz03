@@ -79,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				2FE853331D87910C005AB2B6 /* quiz3.cpp */,
-				2FE8532F1D8773A2005AB2B6 /* Databases */,
 				2FA79B871D86F72500BEEB3A /* Classes */,
 			);
 			path = "CSE 4233 Quiz 03";
@@ -94,6 +93,8 @@
 				2F6606CE1D8637F60098E3E7 /* cart.cpp */,
 				2FA79B8C1D870FD300BEEB3A /* checkout.h */,
 				2FA79B8B1D870FD300BEEB3A /* checkout.cpp */,
+				2FE853321D8773C0005AB2B6 /* database.h */,
+				2FE853301D8773B5005AB2B6 /* database.cpp */,
 				2FA79B8F1D87126300BEEB3A /* inventory.h */,
 				2FA79B8E1D87126300BEEB3A /* inventory.cpp */,
 				2FA79B851D86F6FD00BEEB3A /* item.h */,
@@ -102,15 +103,6 @@
 				2F6606CB1D8634B10098E3E7 /* user.cpp */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		2FE8532F1D8773A2005AB2B6 /* Databases */ = {
-			isa = PBXGroup;
-			children = (
-				2FE853321D8773C0005AB2B6 /* database.h */,
-				2FE853301D8773B5005AB2B6 /* database.cpp */,
-			);
-			name = Databases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

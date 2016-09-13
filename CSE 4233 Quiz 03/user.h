@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -21,7 +22,7 @@ public:
     User();
     User(string userID);
     ~User();
-    getHistory();
+    vector<int> getHistory();
     string login(string username);
     void logout();
     

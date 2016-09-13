@@ -7,3 +7,27 @@
 //
 
 #include "item.h"
+
+//  Creates an item object based on itemID
+Item::Item(int itemNum) {
+    itemID = itemNum;
+    //  SQL to lookup item details based on itemID
+    //  --> stockQuantity
+    //  --> cost
+    //  --> itemName
+    //  --> category
+}
+
+//  Resets an item object's variables
+Item::~Item() {
+    itemID = 0;
+    stockQuantity = 0;
+    cost = 0.0;
+    itemName = "";
+    category = "";
+}
+
+//  Checks item availability in inventory
+bool Item::inInventory() {
+    return stockQuantity > 0;
+}

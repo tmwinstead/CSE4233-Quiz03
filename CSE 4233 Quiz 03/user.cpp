@@ -21,9 +21,19 @@ User::User(string userID) {
     //  SQL to add a new user to DB with given username
 }
 
-//  Deletes a user object without removing user from the database
+//  Resets a user object without removing from DB
 User::~User() {
     username = "";
+}
+
+//  Creates cart from history after lookup via passed User ID
+vector<int> User::getHistory() {
+    vector<int> prevCarts;
+    
+    //  SQL to query DB for all cart uniqueIDs tied to username
+    //  For each previous cart, prevCarts.push_back(cart#)
+    
+    return prevCarts;
 }
 
 //  Checks that provided username is in the DB, if not, creates a new entry
@@ -37,12 +47,6 @@ string User::login(string userID) {
     return "Logged In";
 }
 
-//  Creates cart from history after lookup via passed User ID
-/*Cart User::getHistory() {
-    Cart *cart = new Cart(num);
-    return cart;
-}
-
 void User::logout() {
     
-}*/
+}
