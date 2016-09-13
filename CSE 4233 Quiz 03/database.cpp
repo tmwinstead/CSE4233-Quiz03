@@ -6,7 +6,6 @@
 //  Copyright © 2016 Zach Kendall. All rights reserved.
 //
 
-#include "database.h"
 #include "sqlite3.h"
 
 using namespace std;
