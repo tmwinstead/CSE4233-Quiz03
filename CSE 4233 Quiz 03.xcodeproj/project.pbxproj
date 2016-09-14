@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0A11531D88BBA500075FF5 /* shell.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A11521D88BBA500075FF5 /* shell.c */; };
+		2F0A11571D88BBC700075FF5 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A11541D88BBC700075FF5 /* sqlite3.c */; };
 		2F6606CD1D8634B10098E3E7 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6606CB1D8634B10098E3E7 /* user.cpp */; };
 		2F6606D01D8637F60098E3E7 /* cart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6606CE1D8637F60098E3E7 /* cart.cpp */; };
 		2FA79B861D86F6FD00BEEB3A /* item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FA79B841D86F6FD00BEEB3A /* item.cpp */; };
@@ -31,6 +33,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2F0A11521D88BBA500075FF5 /* shell.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shell.c; sourceTree = "<group>"; };
+		2F0A11541D88BBC700075FF5 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
+		2F0A11551D88BBC700075FF5 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		2F0A11561D88BBC700075FF5 /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
 		2F6606C11D8633EB0098E3E7 /* CSE 4233 Quiz 03 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CSE 4233 Quiz 03"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F6606CB1D8634B10098E3E7 /* user.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user.cpp; sourceTree = "<group>"; };
 		2F6606CC1D8634B10098E3E7 /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
@@ -61,6 +67,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F0A11511D88BB7B00075FF5 /* Databases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Databases;
+			sourceTree = "<group>";
+		};
 		2F6606B81D8633EB0098E3E7 = {
 			isa = PBXGroup;
 			children = (
@@ -80,8 +93,13 @@
 		2F6606C31D8633EB0098E3E7 /* CSE 4233 Quiz 03 */ = {
 			isa = PBXGroup;
 			children = (
+				2F0A11541D88BBC700075FF5 /* sqlite3.c */,
+				2F0A11551D88BBC700075FF5 /* sqlite3.h */,
+				2F0A11561D88BBC700075FF5 /* sqlite3ext.h */,
 				BFCFE28C1D885B92002D7E15 /* quiz3.cpp */,
+				2F0A11521D88BBA500075FF5 /* shell.c */,
 				2FA79B871D86F72500BEEB3A /* Classes */,
+				2F0A11511D88BB7B00075FF5 /* Databases */,
 			);
 			path = "CSE 4233 Quiz 03";
 			sourceTree = "<group>";
@@ -167,10 +185,12 @@
 				2F6606D01D8637F60098E3E7 /* cart.cpp in Sources */,
 				BFCFE28B1D879046002D7E15 /* database.cpp in Sources */,
 				2FA79B901D87126300BEEB3A /* inventory.cpp in Sources */,
+				2F0A11531D88BBA500075FF5 /* shell.c in Sources */,
 				2FA79B8D1D870FD300BEEB3A /* checkout.cpp in Sources */,
 				BFCFE28D1D885B92002D7E15 /* quiz3.cpp in Sources */,
 				BFCFE2881D872FAC002D7E15 /* quiz3.cpp in Sources */,
 				2FA79B861D86F6FD00BEEB3A /* item.cpp in Sources */,
+				2F0A11571D88BBC700075FF5 /* sqlite3.c in Sources */,
 				2FA79B8A1D870EE700BEEB3A /* admin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
