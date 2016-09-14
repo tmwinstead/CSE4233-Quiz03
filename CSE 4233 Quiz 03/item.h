@@ -22,6 +22,7 @@ public:
     string itemName;
     string category;
     
+    Item();
     Item(int itemNum);
     ~Item();
     bool inInventory();

@@ -74,6 +74,17 @@
 			name = Databases;
 			sourceTree = "<group>";
 		};
+		2F0A11591D89BD8300075FF5 /* SQLite3 */ = {
+			isa = PBXGroup;
+			children = (
+				2F0A11551D88BBC700075FF5 /* sqlite3.h */,
+				2F0A11541D88BBC700075FF5 /* sqlite3.c */,
+				2F0A11561D88BBC700075FF5 /* sqlite3ext.h */,
+				2F0A11521D88BBA500075FF5 /* shell.c */,
+			);
+			name = SQLite3;
+			sourceTree = "<group>";
+		};
 		2F6606B81D8633EB0098E3E7 = {
 			isa = PBXGroup;
 			children = (
@@ -93,12 +104,9 @@
 		2F6606C31D8633EB0098E3E7 /* CSE 4233 Quiz 03 */ = {
 			isa = PBXGroup;
 			children = (
-				2F0A11541D88BBC700075FF5 /* sqlite3.c */,
-				2F0A11551D88BBC700075FF5 /* sqlite3.h */,
-				2F0A11561D88BBC700075FF5 /* sqlite3ext.h */,
 				BFCFE28C1D885B92002D7E15 /* quiz3.cpp */,
-				2F0A11521D88BBA500075FF5 /* shell.c */,
 				2FA79B871D86F72500BEEB3A /* Classes */,
+				2F0A11591D89BD8300075FF5 /* SQLite3 */,
 				2F0A11511D88BB7B00075FF5 /* Databases */,
 			);
 			path = "CSE 4233 Quiz 03";

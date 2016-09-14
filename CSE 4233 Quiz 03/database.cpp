@@ -8,8 +8,9 @@
 
 #include "database.h"
 #include "sqlite3.h"
-#include <sstream>
+
 #include <cstring>
+#include <sstream>
 
 using namespace std;
 
@@ -49,7 +50,7 @@ string Database::getUser(string username) {
   return username;
 }
 
-tuple<int, float, string, string> Database::getItem(int itemID) {
+Item Database::getItem(int itemID) {
   sqlite3 *db;
 
   //This converts itemID into a string to concatenate onto the sql statement.
@@ -61,7 +62,8 @@ tuple<int, float, string, string> Database::getItem(int itemID) {
     char *cItemUID;
     char **errmsg;
 
-  tuple<int, float, string, string> itemInfo;
+  Item itemInfo;
+  itemInfo.itemID = itemID;
   const char *sql;
 
   sqlite3_open("quiz3.db", &db);
@@ -82,25 +84,25 @@ tuple<int, float, string, string> Database::getItem(int itemID) {
       itemUID = "SELECT stockQuantity FROM item WHERE item.itemID = " + itemUID;
       strcpy(cItemUID, itemUID.c_str());
       sql = cItemUID;
-      get<0>(itemInfo) = sqlite3_exec(db, sql, callback, 0, errmsg);
+      itemInfo.stockQuantity = sqlite3_exec(db, sql, callback, 0, errmsg);
       break;
     case 1:
       itemUID = "SELECT cost FROM item WHERE item.itemID = " + itemUID;
       strcpy(cItemUID, itemUID.c_str());
       sql = cItemUID;
-      get<1>(itemInfo) = sqlite3_exec(db, sql, callback, 0, errmsg);
+      itemInfo.cost = sqlite3_exec(db, sql, callback, 0, errmsg);
       break;
     case 2:
       itemUID = "SELECT itemName FROM item WHERE item.itemID = " + itemUID;
       strcpy(cItemUID, itemUID.c_str());
       sql = cItemUID;
-      get<2>(itemInfo) = sqlite3_exec(db, sql, callback, 0, errmsg);
+      itemInfo.itemName = sqlite3_exec(db, sql, callback, 0, errmsg);
       break;
     case 3:
       itemUID = "SELECT category FROM item WHERE item.itemID = " + itemUID;
       strcpy(cItemUID, itemUID.c_str());
       sql = cItemUID;
-      get<3>(itemInfo) = sqlite3_exec(db, sql, callback, 0, errmsg);
+      itemInfo.category = sqlite3_exec(db, sql, callback, 0, errmsg);
       break;
 
     default:
