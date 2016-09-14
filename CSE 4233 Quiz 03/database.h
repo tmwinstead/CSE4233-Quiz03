@@ -41,6 +41,7 @@ public:
     bool isPurchased(int uniqueID);
 
     void updateInventory(Cart cart);
+    Cart rebuildCart(string username, int uniqueID);
 };
 
 #endif
