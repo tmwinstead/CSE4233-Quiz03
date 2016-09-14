@@ -31,15 +31,8 @@ public:
     
     //string getUser(string username);
     string updateUser(string username);
-    
-    void getItem(string itemName);
-    void updateItem(string itemName);
-    void updateItem(int itemID);
-
     int getNextCart(string username);
-
     bool isPurchased(int uniqueID);
-
     void updateInventory(Cart cart);
     Cart rebuildCart(string username, int uniqueID);
 };
