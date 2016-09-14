@@ -22,7 +22,7 @@ Database::Database() {
   sqlite3_open("quiz3.db", &db);
   //Check to see if connection was successful
   if (!SQLITE_OK) {
-    printf("Connection established.\n");
+    printf("Connection failed. \n");
   }
   sqlite3_close(db);
 }
@@ -38,18 +38,6 @@ int Database::callback(void *NotUsed, int argc, char **argv, char **azColName) {
   return 0;
 }
 
-string Database::getUser(string username) {
-  sqlite3 *db;
-
-  sqlite3_open("quiz3.db", &db);
-
-  
-  
-  sqlite3_close(db);
-
-  return username;
-}
-
 Item Database::getItem(int itemID) {
   sqlite3 *db;
 
@@ -59,8 +47,9 @@ Item Database::getItem(int itemID) {
   convert << itemID;
   itemUID = convert.str();
   //********************//
-    char *cItemUID;
-    char **errmsg;
+
+  char *cItemUID;
+  char **errmsg;
 
   Item itemInfo;
   itemInfo.itemID = itemID;
@@ -68,8 +57,6 @@ Item Database::getItem(int itemID) {
 
   sqlite3_open("quiz3.db", &db);
   
-  //Iterate through each column of the table and place the data in a vector to return to the Item class.
-    
     /*
      int sqlite3_exec(
      sqlite3*,                                  // An open database
@@ -78,6 +65,8 @@ Item Database::getItem(int itemID) {
     void *,                                    // 1st argument to callback
     char **errmsg                              // Error msg written here
     );*/
+
+    //Iterate through each column of the table and place the data in a vector to return to the Item class.
   for (int i = 0; i < 4; i++) {
     switch (i) {
     case 0:
@@ -116,49 +105,232 @@ Item Database::getItem(int itemID) {
   return itemInfo;
 }
 
-vector<int> Database::getCart(string username) {
+int Database::getNextCart(string username) {
   sqlite3 *db;
+  int cartNum;
+  string statement;
+  bool isPurchased;
+
+  char *cStatement;
+  char **errmsg;
+
+  const char *sql;
+
+  statement = "SELECT MAX(uniqueID) FROM UserCart WHERE UserCart.username = " + username;
+  strcpy(cStatement, statement.c_str());
+  sql = cStatement;
 
   sqlite3_open("quiz3.db", &db);
-  vector<int> cartNums;
 
-  while (!SQLITE_OK) {
-    //add stuff here
+  //Gets latest cartNum, add one to the cartNum, then creates an empty cart.
+  cartNum = sqlite3_exec(db, sql, callback, 0, errmsg);
+
+  //This converts cartNum into a string to concatenate onto the sql statement.
+  string strCartNum;
+  ostringstream convert;
+  convert << cartNum;
+  strCartNum = convert.str();
+  //********************//
+
+  statement = "SELECT isPurchased FROM UserCart WHERE UserCart.uniqueID = " + strCartNum;
+  strcpy(cStatement, statement.c_str());
+  sql = cStatement;
+  isPurchased = sqlite3_exec(db, sql, callback, 0, errmsg);
+
+  if (!isPurchased) {
+    sqlite3_close(db);
+
+    return cartNum;
+  }
+  else {
+    cartNum += 1;
+
+    //This converts cartNum into a string to concatenate onto the sql statement.
+    string strCartNum;
+    ostringstream convert;
+    convert << cartNum;
+    strCartNum = convert.str();
+    //********************//
+
+    statement = "INSERT INTO UserCart VALUES (" + strCartNum + "," + username + ",FALSE)";
+    strcpy(cStatement, statement.c_str());
+    sql = cStatement;
+
+    sqlite3_exec(db, sql, callback, 0, errmsg);
+    //*****************************************//
+
+    sqlite3_close(db);
+
+    return cartNum;
+  }
+}
+
+bool Database::isPurchased(int uniqueID) {
+  sqlite3 *db;
+ 
+  string statement;
+  bool purchased;
+
+  char *cStatement;
+  char **errmsg;
+
+  const char *sql;
+
+  //This converts cartNum into a string to concatenate onto the sql statement.
+  string strCartNum;
+  ostringstream convert;
+  convert << uniqueID;
+  strCartNum = convert.str();
+  //********************//
+
+  statement = "SELECT isPurchased FROM UserCart WHERE UserCart.uniqueID = " + strCartNum;
+  strcpy(cStatement, statement.c_str());
+  sql = cStatement;
+
+  sqlite3_open("quiz3.db", &db);
+
+  purchased = sqlite3_exec(db, sql, callback, 0, errmsg);
+
+  sqlite3_close(db);
+
+  return purchased;
+}
+
+string Database::updateUser(string username) {
+  sqlite3 *db;
+
+  char *cStatement;
+  char **errmsg;
+
+  string statement;
+  const char *sql;
+  void exists;
+  string login = "Logged in."
+
+  //SQL statement to check if the user exists; if no, then make it
+  statement = "SELECT * FROM User WHERE User.username = " + username;
+  strcpy(cStatement, statement.c_str());
+  sql = cStatement;
+
+  sqlite3_open("quiz3.db", &db);
+
+  exists = sqlite3_exec(db, sql, callback, 0, errmsg);
+  if (!exists) {
+    statement = "INSERT INTO User VALUES (" + username + ")";
+    strcpy(cStatement, statement.c_str());
+    sql = cStatement;
+    sqlite3_exec(db, sql, callback, 0, errmsg);
+    login = "User created and logged in."
+  }
+  
+  sqlite3_close(db);
+
+  return login;
+}
+
+void Database::updateInventory(Cart cart) {
+  sqlite3 *db;
+
+  char *cStatement;
+  char **errmsg;
+
+  string statement;
+  const char *sql;
+  string newQuantity;
+  string strItemID;
+  string strCartNum;
+
+  sqlite3_open("quiz3.db", &db);
+
+  for (int i = 0; i < cart.itemList.size(); i++) {
+    //This converts itemID into a string to concatenate onto the sql statement.
+    ostringstream convert;
+    convert << cart.itemList.at(i).itemID;
+    strItemID = convert.str();
+    //********************//
+
+    statement = "UPDATE Inventory SET QUANTITY = " + newQuantity + " WHERE Inventory.itemID = " + strItemID;
+    strcpy(cStatement, statement.c_str());
+    sql = cStatement;
+
+    cout << cart.itemList.at(i).stockQuantity; //Old q
+    cart.itemList.at(i).stockQuantity -= cart.itemQuantities.at(i);
+    cout << cart.itemList.at(i).stockQuantity; //New q
+
+    //This converts the item quantity into a string to concatenate onto the sql statement.
+    ostringstream convert;
+    convert << cart.itemList.at(i).stockQuantity;
+    newQuantity = convert.str();
+    //********************//
+
+    sqlite3_exec(db, sql, callback, 0, errmsg);
   }
 
-  sqlite3_close(db);
-
-  return cartNums;
-}
-
-void Database::updateUser(string username) {
-  sqlite3 *db;
-
-  sqlite3_open("quiz3.db", &db);
-
-  sqlite3_close(db);
-}
-
-void Database::updateItem(string itemName) {
-  sqlite3 *db;
-
-  sqlite3_open("quiz3.db", &db);
+  //This converts cartNum into a string to concatenate onto the sql statement.
+  ostringstream convert;
+  convert << cart.uniqueID;
+  strCartNum = convert.str();
+  //********************//
+  statement = "UPDATE UserCart SET isPurchased = TRUE WHERE UserCart.uniqueID = " + strCartNum;
+  strcpy(cStatement, statement.c_str());
+  sql = cStatement;
+  sqlite3_exec(db, sql, callback, 0, errmsg);
 
   sqlite3_close(db);
 }
 
-void Database::updateItem(int itemID) {
+Cart Database::rebuildCart(string username, int uniqueID) {
   sqlite3 *db;
+  Cart cart;
 
+  int iterations;
+  int itemID;
+  int quantity;
+  string statement;
+  char *cStatement;
+  char **errmsg;
+
+  //This converts cartNum into a string to concatenate onto the sql statement.
+  string strCartNum;
+  ostringstream convert;
+  convert << cartNum;
+  strCartNum = convert.str();
+  //********************//
+  string strItemNum; //for later use
+
+
+  const char *sql;
   sqlite3_open("quiz3.db", &db);
 
+  //Get number of items in cart to determine how many iterations the loop runs
+  statement = "SELECT MAX(itemNum) FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username;
+  strcpy(cStatement, statement.c_str());
+  sql = cStatement;
+  iterations = sqlite3_exec(db, sql, callback, 0, errmsg);
+
+  for (int i = 0; i <= iterations; i++) {
+    //This converts iterations into a string to concatenate onto the sql statement.
+    //Initialized out of forLoop
+    ostringstream convert;
+    convert << iterations;
+    strItemNum = convert.str();
+    //********************//
+
+    //Get itemID
+    statement = "SELECT itemID FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username " AND CartItem.itemNum = " + strItemNum;
+    strcpy(cStatement, statement.c_str());
+    sql = cStatement;
+    itemID = sqlite3_exec(db, sql, callback, 0, errmsg);
+    //Get quantity
+    statement = "SELECT quantity FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username " AND CartItem.itemNum = " + strItemNum;
+    strcpy(cStatement, statement.c_str());
+    sql = cStatement;
+    quantity = sqlite3_exec(db, sql, callback, 0, errmsg);
+    //Add to cart
+    cart.addToCart(itemID, quantity);
+  }
+  
   sqlite3_close(db);
-}
 
-void Database::updateInventory() {
-  sqlite3 *db;
-
-  sqlite3_open("quiz3.db", &db);
-
-  sqlite3_close(db);
+  return cart;
 }

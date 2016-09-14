@@ -10,6 +10,8 @@
 #define DATABASE_H
 
 #include "item.h"
+#include "user.h"
+#include "cart.h"
 
 #include <iostream>
 #include <string>
@@ -27,14 +29,12 @@ public:
     Database();
     ~Database();
     
-    string getUser(string username);
-    void updateUser(string username);
-    
-    void getItem(string itemName);
-    void updateItem(string itemName);
-    void updateItem(int itemID);
-    vector<int> getCart(string username);
-    void updateInventory();
+    //string getUser(string username);
+    string updateUser(string username);
+    int getNextCart(string username);
+    bool isPurchased(int uniqueID);
+    void updateInventory(Cart cart);
+    Cart rebuildCart(string username, int uniqueID);
 };
 
 #endif
