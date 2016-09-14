@@ -36,6 +36,15 @@ void Checkout::addShippingAddress() {
 bool Checkout::updateInventory(Cart cart) {
     bool purchaseSuccess = true;
     
+    
+    
+    
+    ////////*********************TOOOOOO DOOOOOOOOOOOO*************/////////
+    //  USER NEEDS NEW CART
+    
+    
+    
+    
     //  SQL to update the inventory
     //  Cout inventory of each purchased item before and after update
     //  If inventory update is successful, return purchase successful

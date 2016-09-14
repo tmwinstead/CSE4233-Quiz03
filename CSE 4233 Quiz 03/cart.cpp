@@ -8,6 +8,7 @@
 
 #include "cart.h"
 #include "checkout.h"
+#include "database.h"
 
 //  Builds an empty cart with variables initialized
 Cart::Cart() {
@@ -19,24 +20,22 @@ Cart::Cart() {
 //  Builds a new cart for a user
 Cart::Cart(User user) {
     username = user.username;
-    
-    // SQL here to pull next unique ID
-    // uniqueID = ***returned uniqueID+1 ***
-    
-    numItems = 0;
-    
+    Database db;
+    uniqueID = db.getNextCart(username);
+    bool purchased = db.isPurchased(uniqueID);
+    if (!purchased) {
+        Cart(username, uniqueID);
+    }
 }
 
 //  Builds a cart with existing history
 Cart::Cart(User user, int cartID) {
-    username = user.username;
-    uniqueID = cartID;
     
-    //  SQL code to populate items/quantities/prices
-    //  --> itemList[]
-    //  --> itemQuantities[]
-    //  --> itemPrices[]
-    //  --> numItems (a count of number of different items)
+    Database db;
+    Cart cart = db.rebuildCart(user.username, cartID);
+    username = cart.username;
+    uniqueID = cart.uniqueID;
+    numItems = cart.numItems;
 }
 
 //  Resets a cart object's variables but does not remove from DB
@@ -52,21 +51,15 @@ Cart::~Cart() {
 
 //  Adds an item to the cart
 void Cart::addToCart(int itemID, int quantity) {
-    Item *item = new Item(0);
-    item->itemID = itemID;
-    
-    //  SQL to lookup item and populate item object data fields
-    //  --> item.stockQuantity
-    //  --> item.cost
-    //  --> item.itemName
-    //  --> item.category
+    Database db;
+    Item item = db.getItem(itemID);
     
     int exists = 0;
     for (int i=0; i < itemList.size(); i++) {
-        if (item->itemID == itemList.at(i).itemID) {
+        if (item.itemID == itemList.at(i).itemID) {
             exists = 1;
-            if (item->stockQuantity < itemList.at(i).stockQuantity+quantity) {
-                itemQuantities.at(i) = item->stockQuantity;
+            if (item.stockQuantity < itemList.at(i).stockQuantity+quantity) {
+                itemQuantities.at(i) = item.stockQuantity;
             }
             else {
                 itemQuantities.at(i) += quantity;
@@ -76,9 +69,9 @@ void Cart::addToCart(int itemID, int quantity) {
     }
     if (!exists) {
         numItems++;
-        itemList.push_back(*item);
-        if (item->stockQuantity < quantity) {
-            itemQuantities.push_back(item->stockQuantity);
+        itemList.push_back(item);
+        if (item.stockQuantity < quantity) {
+            itemQuantities.push_back(item.stockQuantity);
         }
         else itemQuantities.push_back(quantity);
     }

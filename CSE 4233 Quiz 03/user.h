@@ -23,7 +23,7 @@ public:
     User(string userID);
     ~User();
     vector<int> getHistory();
-    string login(string username);
+    string login(string userID);
     void logout();
     
 };
