@@ -9,22 +9,32 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
+#include "item.h"
+#include "user.h"
+#include "cart.h"
+
 #include <iostream>
+#include <string>
+#include <tuple>
+#include <vector>
 
 using namespace std;
 
 class Database {
 public:
-    void getUser();
-    void getUserCart();
-    void getCartItem();
-    void getItem();
-    void getInventory();
-    void updateUser();
-    void updateUserCart();
-    void updateCartItem();
-    void updateItem();
-    void updateInventory();
+    
+    static int callback(void *NotUsed, int argc, char **argv, char **azColName);
+    Item getItem(int userID);
+    
+    Database();
+    ~Database();
+    
+    //string getUser(string username);
+    string updateUser(string username);
+    int getNextCart(string username);
+    bool isPurchased(int uniqueID);
+    void updateInventory(Cart cart);
+    Cart rebuildCart(string username, int uniqueID);
 };
 
 #endif

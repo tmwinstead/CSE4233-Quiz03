@@ -7,15 +7,26 @@
 //
 
 #include "item.h"
+#include "database.h"
+
+//  Creates a blank item object
+Item::Item() {
+    itemID = 0;
+    stockQuantity = 0;
+    cost = 0.0;
+    itemName = "";
+    category = "";
+}
 
 //  Creates an item object based on itemID
 Item::Item(int itemNum) {
-    itemID = itemNum;
-    //  SQL to lookup item details based on itemID
-    //  --> stockQuantity
-    //  --> cost
-    //  --> itemName
-    //  --> category
+    Database db;
+    Item item = db.getItem(itemNum);
+    
+    itemID = item.itemID;
+    stockQuantity = item.stockQuantity;
+    itemName = item.itemName;
+    category = item.category;
 }
 
 //  Resets an item object's variables

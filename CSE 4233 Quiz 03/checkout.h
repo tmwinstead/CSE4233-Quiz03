@@ -18,7 +18,7 @@ using namespace std;
 
 class Checkout {
 private:
-    string updateInventory();
+    bool updateInventory(Cart cart);
     void addCardNumber();
     void addShippingAddress();
     
@@ -28,7 +28,7 @@ public:
     
     Checkout();
     ~Checkout();
-    void submitOrder(string username, int uniqueID);
+    void submitOrder(Cart cart);
 };
 
 #endif
