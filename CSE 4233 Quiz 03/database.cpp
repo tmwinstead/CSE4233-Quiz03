@@ -340,13 +340,14 @@ Cart Database::rebuildCart(string username, int uniqueID) {
 
 vector<Item> Database::categoryLookup(string category) {
   sqlite3 *db;
-  Cart cart;
 
+  ostringstream convert;
   string strItemNum;
   vector<Item> items;
   string statement;
   char *cStatement;
   char **errmsg;
+  int iterations;
 
   const char *sql;
   sqlite3_open("quiz3.db", &db);
@@ -363,25 +364,25 @@ vector<Item> Database::categoryLookup(string category) {
     strItemNum = convert.str();
     //********************//
 
-    Item item = new Item;
-    item.category = category;
+    Item* item = new Item;
+    item->category = category;
 
     statement = "SELECT itemID FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum + ";";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
-    item.itemID = sqlite3_exec(db, sql, callback, 0, errmsg);
+    item->itemID = sqlite3_exec(db, sql, callback, 0, errmsg);
 
     statement = "SELECT cost FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum + ";";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
-    item.cost = sqlite3_exec(db, sql, callback, 0, errmsg);
+    item->cost = sqlite3_exec(db, sql, callback, 0, errmsg);
 
     statement = "SELECT quantity FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum + ";";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
-    item.stockQuantity = sqlite3_exec(db, sql, callback, 0, errmsg);
+    item->stockQuantity = sqlite3_exec(db, sql, callback, 0, errmsg);
 
-    items.push_back() = item;
+    items.push_back(*item);
   }
 
   sqlite3_close(db);
