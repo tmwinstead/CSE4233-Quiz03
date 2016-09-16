@@ -48,7 +48,7 @@ Item Database::getItem(int itemID) {
   itemUID = convert.str();
   //********************//
 
-  char *cItemUIDchar = (char *) malloc(sizeof(char)*200);
+  char *cItemUID = (char *) malloc(sizeof(char)*200);
   char **errmsg;
 
   Item itemInfo;
@@ -111,7 +111,7 @@ int Database::getNextCart(string username) {
   string statement;
   bool isPurchased;
 
-  char *cStatement;
+  char *cStatement = (char *) malloc(sizeof(char)*200);
   char **errmsg;
 
   const char *sql;
@@ -171,7 +171,7 @@ bool Database::isPurchased(int uniqueID) {
   string statement;
   bool purchased;
 
-  char *cStatement;
+  char *cStatement = (char *) malloc(sizeof(char)*200);
   char **errmsg;
 
   const char *sql;
@@ -199,7 +199,7 @@ bool Database::isPurchased(int uniqueID) {
 string Database::updateUser(string username) {
   sqlite3 *db;
 
-  char *cStatement;
+  char *cStatement = (char *) malloc(sizeof(char)*200);
   char **errmsg;
 
   string statement;
@@ -231,7 +231,7 @@ string Database::updateUser(string username) {
 bool Database::updateInventory(Cart cart) {
   sqlite3 *db;
 
-  char *cStatement;
+  char *cStatement = (char *) malloc(sizeof(char)*200);
   char **errmsg;
 
   string statement;
@@ -292,7 +292,7 @@ Cart Database::rebuildCart(string username, int uniqueID) {
   int itemID;
   int quantity;
   string statement;
-  char *cStatement;
+  char *cStatement = (char *) malloc(sizeof(char)*200);
   char **errmsg;
 
   //This converts cartNum into a string to concatenate onto the sql statement.
@@ -345,7 +345,7 @@ vector<Item> Database::categoryLookup(string category) {
   string strItemNum;
   vector<Item> items;
   string statement;
-  char *cStatement;
+  char *cStatement = (char *) malloc(sizeof(char)*200);
   char **errmsg;
   int iterations;
 
