@@ -35,6 +35,7 @@ public:
     bool isPurchased(int uniqueID);
     bool updateInventory(Cart cart);
     Cart rebuildCart(string username, int uniqueID);
+    vector<Item> categoryLookup(string category);
 };
 
 #endif
