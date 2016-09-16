@@ -64,7 +64,7 @@ void buildDB() {
     strcpy(cStatement, statement.c_str());
     sql5 = cStatement;
     sqlite3_exec(db, sql5, callback, 0, errmsg);
-
+    
     //Populate the DB with default values
     statement = "INSERT INTO Item (itemID, itemName, cost, category) VALUES ('0001', 'Finish All in 1 Powerball Mega Pack', 13.56, 'Household Items');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0002', 'Kleenex Facial Tissue', 14.98, 'Household Items');\
@@ -118,7 +118,7 @@ void buildDB() {
     strcpy(cStatement, statement.c_str());
     sql8 = cStatement;
     sqlite3_exec(db, sql8, callback, 0, errmsg);
-
+    
     sqlite3_close(db);
 }
 

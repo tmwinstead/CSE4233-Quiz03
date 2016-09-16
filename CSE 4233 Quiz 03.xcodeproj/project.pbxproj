@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F0A11571D88BBC700075FF5 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A11541D88BBC700075FF5 /* sqlite3.c */; };
 		2F43C0A41D8C95970015F097 /* buildDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F43C0A31D8C95970015F097 /* buildDB.cpp */; };
+		2F43C0AE1D8CBBF40015F097 /* buildDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F43C0AD1D8CBBF40015F097 /* buildDB.cpp */; };
+		2F43C0B31D8CBC320015F097 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F43C0B21D8CBC320015F097 /* libsqlite3.dylib */; };
 		2F6606CD1D8634B10098E3E7 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6606CB1D8634B10098E3E7 /* user.cpp */; };
 		2F6606D01D8637F60098E3E7 /* cart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6606CE1D8637F60098E3E7 /* cart.cpp */; };
 		2FA79B861D86F6FD00BEEB3A /* item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FA79B841D86F6FD00BEEB3A /* item.cpp */; };
@@ -20,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2F43C0941D8C8C930015F097 /* CopyFiles */ = {
+		2F43C0A91D8CBBF40015F097 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -43,8 +45,10 @@
 /* Begin PBXFileReference section */
 		2F0A11541D88BBC700075FF5 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
 		2F0A11551D88BBC700075FF5 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
-		2F43C0961D8C8C930015F097 /* Build DB */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Build DB"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F43C0A31D8C95970015F097 /* buildDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildDB.cpp; sourceTree = "<group>"; };
+		2F43C0AB1D8CBBF40015F097 /* Build DB */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Build DB"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F43C0AD1D8CBBF40015F097 /* buildDB.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = buildDB.cpp; sourceTree = "<group>"; };
+		2F43C0B21D8CBC320015F097 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		2F6606C11D8633EB0098E3E7 /* CSE 4233 Quiz 03 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CSE 4233 Quiz 03"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F6606CB1D8634B10098E3E7 /* user.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user.cpp; sourceTree = "<group>"; };
 		2F6606CC1D8634B10098E3E7 /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
@@ -62,10 +66,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2F43C0931D8C8C930015F097 /* Frameworks */ = {
+		2F43C0A81D8CBBF40015F097 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F43C0B31D8CBC320015F097 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,10 +101,20 @@
 			name = SQLite3;
 			sourceTree = "<group>";
 		};
+		2F43C0AC1D8CBBF40015F097 /* Build DB */ = {
+			isa = PBXGroup;
+			children = (
+				2F43C0AD1D8CBBF40015F097 /* buildDB.cpp */,
+			);
+			path = "Build DB";
+			sourceTree = "<group>";
+		};
 		2F6606B81D8633EB0098E3E7 = {
 			isa = PBXGroup;
 			children = (
+				2F43C0B21D8CBC320015F097 /* libsqlite3.dylib */,
 				2F6606C31D8633EB0098E3E7 /* CSE 4233 Quiz 03 */,
+				2F43C0AC1D8CBBF40015F097 /* Build DB */,
 				2F6606C21D8633EB0098E3E7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				2F6606C11D8633EB0098E3E7 /* CSE 4233 Quiz 03 */,
-				2F43C0961D8C8C930015F097 /* Build DB */,
+				2F43C0AB1D8CBBF40015F097 /* Build DB */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,13 +168,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2F43C0951D8C8C930015F097 /* Build DB */ = {
+		2F43C0AA1D8CBBF40015F097 /* Build DB */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2F43C09A1D8C8C930015F097 /* Build configuration list for PBXNativeTarget "Build DB" */;
+			buildConfigurationList = 2F43C0AF1D8CBBF40015F097 /* Build configuration list for PBXNativeTarget "Build DB" */;
 			buildPhases = (
-				2F43C0921D8C8C930015F097 /* Sources */,
-				2F43C0931D8C8C930015F097 /* Frameworks */,
-				2F43C0941D8C8C930015F097 /* CopyFiles */,
+				2F43C0A71D8CBBF40015F097 /* Sources */,
+				2F43C0A81D8CBBF40015F097 /* Frameworks */,
+				2F43C0A91D8CBBF40015F097 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -167,7 +182,7 @@
 			);
 			name = "Build DB";
 			productName = "Build DB";
-			productReference = 2F43C0961D8C8C930015F097 /* Build DB */;
+			productReference = 2F43C0AB1D8CBBF40015F097 /* Build DB */;
 			productType = "com.apple.product-type.tool";
 		};
 		2F6606C01D8633EB0098E3E7 /* CSE 4233 Quiz 03 */ = {
@@ -196,7 +211,7 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Tyler Winstead";
 				TargetAttributes = {
-					2F43C0951D8C8C930015F097 = {
+					2F43C0AA1D8CBBF40015F097 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
 					2F6606C01D8633EB0098E3E7 = {
@@ -217,16 +232,17 @@
 			projectRoot = "";
 			targets = (
 				2F6606C01D8633EB0098E3E7 /* CSE 4233 Quiz 03 */,
-				2F43C0951D8C8C930015F097 /* Build DB */,
+				2F43C0AA1D8CBBF40015F097 /* Build DB */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2F43C0921D8C8C930015F097 /* Sources */ = {
+		2F43C0A71D8CBBF40015F097 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F43C0AE1D8CBBF40015F097 /* buildDB.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +266,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		2F43C09B1D8C8C930015F097 /* Debug */ = {
+		2F43C0B01D8CBBF40015F097 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -258,7 +274,7 @@
 			};
 			name = Debug;
 		};
-		2F43C09C1D8C8C930015F097 /* Release */ = {
+		2F43C0B11D8CBBF40015F097 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -364,14 +380,13 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2F43C09A1D8C8C930015F097 /* Build configuration list for PBXNativeTarget "Build DB" */ = {
+		2F43C0AF1D8CBBF40015F097 /* Build configuration list for PBXNativeTarget "Build DB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2F43C09B1D8C8C930015F097 /* Debug */,
-				2F43C09C1D8C8C930015F097 /* Release */,
+				2F43C0B01D8CBBF40015F097 /* Debug */,
+				2F43C0B11D8CBBF40015F097 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		2F6606BC1D8633EB0098E3E7 /* Build configuration list for PBXProject "CSE 4233 Quiz 03" */ = {
 			isa = XCConfigurationList;
