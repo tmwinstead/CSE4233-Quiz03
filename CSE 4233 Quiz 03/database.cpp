@@ -389,3 +389,99 @@ vector<Item> Database::categoryLookup(string category) {
 
   return items;
 }
+
+void addToUserCart(int uniqueID, string username) {
+  sqlite3 *db;
+
+  char *cStatement = (char *)malloc(sizeof(char) * 200);
+  char **errmsg;
+
+  string statement;
+  const char *sql;
+  string strUID;
+  ostringstream convert;
+
+  convert << uniqueID;
+  strUID = convert.str();
+
+  sqlite3_open("quiz3.db", &db);
+
+  statement = "INSERT INTO UserCart VALUES(" + strUID + ", "+ username + ");";
+  strcpy(cStatement, statement.c_str());
+  sql = cStatement;
+  sqlite3_exec(db, sql, callback, 0, errmsg);
+
+  sqlite3_close(db);
+}
+
+void addToCartItem(int uniqueID, int itemNum, int quantity, float price, int itemID) {
+  sqlite3 *db;
+
+  char *cStatement = (char *)malloc(sizeof(char) * 200);
+  char **errmsg;
+
+  string statement;
+  const char *sql;
+  string strUID;
+  string strItemNum;
+  string strQuantity;
+  string strPrice;
+  string strItemID;
+  ostringstream convert;
+
+  convert << uniqueID;
+  strUID = convert.str();
+  convert << itemNum;
+  strItemNum = convert.str();
+  convert << quantity;
+  strQuantity = convert.str();
+  convert << price;
+  strPrice = convert.str();
+  convert << itemID;
+  strItemID = convert.str();
+
+  sqlite3_open("quiz3.db", &db);
+
+  statement = "INSERT INTO CartItem VALUES(" + strUID + ", " + strItemNum + ", " + strQuantity + ", " + strPrice + ", " + strItemID + ");";
+  strcpy(cStatement, statement.c_str());
+  sql = cStatement;
+  sqlite3_exec(db, sql, callback, 0, errmsg);
+
+  sqlite3_close(db);
+}
+
+void removeFromCartItem(int uniqueID, int itemNum, int quantity, float price, int itemID); {
+  sqlite3 *db;
+
+  char *cStatement = (char *)malloc(sizeof(char) * 200);
+  char **errmsg;
+
+  string statement;
+  const char *sql;
+  string strUID;
+  string strItemNum;
+  string strQuantity;
+  string strPrice;
+  string strItemID;
+  ostringstream convert;
+
+  convert << uniqueID;
+  strUID = convert.str();
+  convert << itemNum;
+  strItemNum = convert.str();
+  convert << quantity;
+  strQuantity = convert.str();
+  convert << price;
+  strPrice = convert.str();
+  convert << itemID;
+  strItemID = convert.str();
+
+  sqlite3_open("quiz3.db", &db);
+
+  statement = "DELETE FROM CartItem WHERE uniqueID = " + strUID + " AND itemNum = " + strItemNum + " AND quantity = " + strQuantity + " AND price = " + strPrice + " AND itemID = " + strItemID + ");";
+  strcpy(cStatement, statement.c_str());
+  sql = cStatement;
+  sqlite3_exec(db, sql, callback, 0, errmsg);
+
+  sqlite3_close(db);
+}

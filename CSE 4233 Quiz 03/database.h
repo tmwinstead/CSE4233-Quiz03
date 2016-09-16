@@ -36,6 +36,9 @@ public:
     bool updateInventory(Cart cart);
     Cart rebuildCart(string username, int uniqueID);
     vector<Item> categoryLookup(string category);
+    void addToUserCart(int uniqueID, string username);
+    void addToCartItem(int uniqueID, int itemNum, int quantity, float price, int itemID);
+    void removeFromCartItem(int uniqueID, int itemNum, int quantity, float price, int itemID);
 };
 
 #endif
