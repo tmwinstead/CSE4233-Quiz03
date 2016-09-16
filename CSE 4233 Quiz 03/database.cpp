@@ -48,7 +48,7 @@ Item Database::getItem(int itemID) {
   itemUID = convert.str();
   //********************//
 
-  char *cItemUID;
+  char *cItemUIDchar = (char *) malloc(sizeof(char)*200);
   char **errmsg;
 
   Item itemInfo;

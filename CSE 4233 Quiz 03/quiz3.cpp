@@ -1,5 +1,5 @@
-/*//
-//  main.cpp
+//
+//  quiz3.cpp
 //  CSE 4233 Quiz 03
 //
 //  Created by Jimmy Bailey on 9/12/16.
