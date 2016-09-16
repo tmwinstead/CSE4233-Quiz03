@@ -21,6 +21,7 @@ int callback(void *NotUsed, int argc, char **argv, char **azColName) {
     return 0;
 }
 
+//  This will build a fresh DB
 void buildDB() {
     
     string statement;

@@ -91,6 +91,7 @@
 		2F0A11511D88BB7B00075FF5 /* Databases */ = {
 			isa = PBXGroup;
 			children = (
+				2F43C0A31D8C95970015F097 /* buildDB.cpp */,
 			);
 			name = Databases;
 			sourceTree = "<group>";
@@ -126,7 +127,6 @@
 		2F6606C31D8633EB0098E3E7 /* CSE 4233 Quiz 03 */ = {
 			isa = PBXGroup;
 			children = (
-				2F43C0A31D8C95970015F097 /* buildDB.cpp */,
 				BFCFE28C1D885B92002D7E15 /* quiz3.cpp */,
 				2FA79B871D86F72500BEEB3A /* Classes */,
 				2F0A11591D89BD8300075FF5 /* SQLite3 */,
