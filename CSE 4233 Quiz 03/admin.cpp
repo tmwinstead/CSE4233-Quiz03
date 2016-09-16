@@ -1,3 +1,4 @@
+/*
 //
 //  admin.cpp
 //  CSE 4233 Quiz 03
@@ -26,3 +27,4 @@ void readFromStorage() {
   getItem();
   getInventory();
  }
+*/
