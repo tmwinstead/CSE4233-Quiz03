@@ -33,7 +33,7 @@ public:
     string updateUser(string username);
     int getNextCart(string username);
     bool isPurchased(int uniqueID);
-    void updateInventory(Cart cart);
+    bool updateInventory(Cart cart);
     Cart rebuildCart(string username, int uniqueID);
 };
 
