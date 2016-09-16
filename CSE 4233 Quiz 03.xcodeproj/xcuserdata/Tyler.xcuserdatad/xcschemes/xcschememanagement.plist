@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Build DB.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>CSE 4233 Quiz 03.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>2F43C0951D8C8C930015F097</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2F6606C01D8633EB0098E3E7</key>
 		<dict>
 			<key>primary</key>
