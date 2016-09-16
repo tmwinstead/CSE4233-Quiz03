@@ -1,3 +1,4 @@
+/*
 //
 //  admin.h
 //  CSE 4233 Quiz 03
@@ -20,3 +21,4 @@ public:
 };
 
 #endif
+*/
