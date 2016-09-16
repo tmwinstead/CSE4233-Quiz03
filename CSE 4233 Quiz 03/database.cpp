@@ -250,7 +250,7 @@ bool Database::updateInventory(Cart cart) {
     strItemID = convert.str();
     //********************//
 
-    statement = "UPDATE Inventory SET QUANTITY = " + newQuantity + " WHERE Inventory.itemID = " + strItemID;
+    statement = "UPDATE Inventory SET quantity = " + newQuantity + " WHERE Inventory.itemID = " + strItemID;
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
 
@@ -315,7 +315,7 @@ Cart Database::rebuildCart(string username, int uniqueID) {
 
   for (int i = 0; i <= iterations; i++) {
     //This converts iterations into a string to concatenate onto the sql statement.
-    convert << iterations;
+    convert << i;
     strItemNum = convert.str();
     //********************//
 
@@ -336,4 +336,55 @@ Cart Database::rebuildCart(string username, int uniqueID) {
   sqlite3_close(db);
 
   return cart;
+}
+
+vector<Item> Database::categoryLookup(string category) {
+  sqlite3 *db;
+  Cart cart;
+
+  string strItemNum;
+  vector<Item> items;
+  string statement;
+  char *cStatement;
+  char **errmsg;
+
+  const char *sql;
+  sqlite3_open("quiz3.db", &db);
+
+  //Get number of items in category to determine how many iterations the loop runs
+  statement = "SELECT COUNT(*) FROM Item WHERE Item.category= " + category;
+  strcpy(cStatement, statement.c_str());
+  sql = cStatement;
+  iterations = sqlite3_exec(db, sql, callback, 0, errmsg);
+
+  for (int i = 0; i < iterations; i++) {
+    //This converts iterations into a string to concatenate onto the sql statement.
+    convert << i;
+    strItemNum = convert.str();
+    //********************//
+
+    Item item = new Item;
+    item.category = category;
+
+    statement = "SELECT itemID FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum;
+    strcpy(cStatement, statement.c_str());
+    sql = cStatement;
+    item.itemID = sqlite3_exec(db, sql, callback, 0, errmsg);
+
+    statement = "SELECT cost FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum;
+    strcpy(cStatement, statement.c_str());
+    sql = cStatement;
+    item.cost = sqlite3_exec(db, sql, callback, 0, errmsg);
+
+    statement = "SELECT quantity FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum;
+    strcpy(cStatement, statement.c_str());
+    sql = cStatement;
+    item.stockQuantity = sqlite3_exec(db, sql, callback, 0, errmsg);
+
+    items.push_back() = item;
+  }
+
+  sqlite3_close(db);
+
+  return items;
 }
