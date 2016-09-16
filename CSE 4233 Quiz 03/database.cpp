@@ -21,7 +21,7 @@ Database::Database() {
   //This will create a database if it doesn't exist.
   sqlite3_open("quiz3.db", &db);
   //Check to see if connection was successful
-  if (!SQLITE_OK) {
+  if (SQLITE_OK) {
     printf("Connection failed. \n");
   }
   sqlite3_close(db);
@@ -116,7 +116,7 @@ int Database::getNextCart(string username) {
 
   const char *sql;
 
-  statement = "SELECT MAX(uniqueID) FROM UserCart WHERE UserCart.username = " + username + ";";
+  statement = "SELECT MAX(uniqueID) FROM UserCart WHERE UserCart.username = '" + username + "';";
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
 
@@ -152,7 +152,7 @@ int Database::getNextCart(string username) {
     strCartNum = convert.str();
     //********************//
 
-    statement = "INSERT INTO UserCart VALUES (" + strCartNum + "," + username + ",FALSE);";
+    statement = "INSERT INTO UserCart VALUES (" + strCartNum + ",'" + username + "',FALSE);";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
 
@@ -208,7 +208,7 @@ string Database::updateUser(string username) {
   string login = "Logged in.";
 
   //SQL statement to check if the user exists; if no, then make it
-  statement = "SELECT * FROM User WHERE User.username = " + username + ";";
+  statement = "SELECT * FROM User WHERE User.username = '" + username + "';";
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
     
@@ -216,7 +216,7 @@ string Database::updateUser(string username) {
     
   exists = sqlite3_exec(db, sql, callback, 0, errmsg);
   if (!exists) {
-    statement = "INSERT INTO User VALUES (" + username + ");";
+    statement = "INSERT INTO User VALUES ('" + username + "');";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
