@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2F0A11531D88BBA500075FF5 /* shell.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A11521D88BBA500075FF5 /* shell.c */; };
 		2F0A11571D88BBC700075FF5 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A11541D88BBC700075FF5 /* sqlite3.c */; };
-		2F43C09E1D8C8D0E0015F097 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F43C09D1D8C8D0E0015F097 /* libsqlite3.dylib */; };
 		2F43C0A21D8C94A60015F097 /* buildDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F43C0A11D8C94A60015F097 /* buildDB.cpp */; };
 		2F43C0A41D8C95970015F097 /* buildDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F43C0A31D8C95970015F097 /* buildDB.cpp */; };
 		2F6606CD1D8634B10098E3E7 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6606CB1D8634B10098E3E7 /* user.cpp */; };
@@ -51,7 +50,6 @@
 		2F0A11551D88BBC700075FF5 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		2F0A11561D88BBC700075FF5 /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3ext.h; sourceTree = "<group>"; };
 		2F43C0961D8C8C930015F097 /* Build DB */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Build DB"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F43C09D1D8C8D0E0015F097 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		2F43C0A11D8C94A60015F097 /* buildDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildDB.cpp; sourceTree = "<group>"; };
 		2F43C0A31D8C95970015F097 /* buildDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildDB.cpp; sourceTree = "<group>"; };
 		2F6606C11D8633EB0098E3E7 /* CSE 4233 Quiz 03 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CSE 4233 Quiz 03"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +77,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F43C09E1D8C8D0E0015F097 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +119,6 @@
 		2F6606B81D8633EB0098E3E7 = {
 			isa = PBXGroup;
 			children = (
-				2F43C09D1D8C8D0E0015F097 /* libsqlite3.dylib */,
 				2F6606C31D8633EB0098E3E7 /* CSE 4233 Quiz 03 */,
 				2F43C0971D8C8C930015F097 /* Build DB */,
 				2F6606C21D8633EB0098E3E7 /* Products */,
