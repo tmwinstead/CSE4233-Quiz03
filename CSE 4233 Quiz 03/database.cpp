@@ -240,6 +240,7 @@ bool Database::updateInventory(Cart cart) {
   string strItemID;
   string strCartNum;
   ostringstream convert;
+  bool success;
 
   sqlite3_open("quiz3.db", &db);
 
@@ -264,7 +265,7 @@ bool Database::updateInventory(Cart cart) {
 
     sqlite3_exec(db, sql, callback, 0, errmsg);
     if (SQLITE_OK) {
-      bool success = true;
+      success = true;
     }
   }
 
