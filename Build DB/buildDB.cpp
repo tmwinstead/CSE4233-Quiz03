@@ -25,6 +25,13 @@ int callback(void *NotUsed, int argc, char **argv, char **azColName) {
 void buildDB() {
     
     string statement;
+    string statement2;
+    string statement3;
+    string statement4;
+    string statement5;
+    string statement6;
+    string statement7;
+    
     const char *sql;
     const char *sql2;
     const char *sql3;
@@ -32,8 +39,15 @@ void buildDB() {
     const char *sql5;
     const char *sql6;
     const char *sql7;
-    const char *sql8;
+    
     char *cStatement = (char *) malloc(sizeof(char)*1000);
+    char *cStatement2 = (char *) malloc(sizeof(char)*1000);
+    char *cStatement3 = (char *) malloc(sizeof(char)*1000);
+    char *cStatement4 = (char *) malloc(sizeof(char)*1000);
+    char *cStatement5 = (char *) malloc(sizeof(char)*1000);
+    char *cStatement6 = (char *) malloc(sizeof(char)*1000);
+    char *cStatement7 = (char *) malloc(sizeof(char)*1000);
+    
     char **errmsg;
     
     sqlite3 *db;
@@ -45,28 +59,28 @@ void buildDB() {
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
     
-    statement = "CREATE TABLE Item(itemID varchar(50) PRIMARY KEY NOT NULL, itemName varchar(100), stockQuantity int, cost float, category varchar(50));";
-    strcpy(cStatement, statement.c_str());
-    sql2 = cStatement;
+    statement2 = "CREATE TABLE Item(itemID varchar(50) PRIMARY KEY NOT NULL, itemName varchar(100), stockQuantity int, cost float, category varchar(50));";
+    strcpy(cStatement2, statement2.c_str());
+    sql2 = cStatement2;
     sqlite3_exec(db, sql2, callback, 0, errmsg);
     
-    statement = "CREATE TABLE Inventory(itemID int, quantity int);";
-    strcpy(cStatement, statement.c_str());
-    sql3 = cStatement;
+    statement3 = "CREATE TABLE Inventory(itemID int PRIMARY KEY NOT NULL, quantity int);";
+    strcpy(cStatement3, statement3.c_str());
+    sql3 = cStatement3;
     sqlite3_exec(db, sql3, callback, 0, errmsg);
     
-    statement = "CREATE TABLE UserCart(isPurchased boolean, uniqueID int, username varchar(50));";
-    strcpy(cStatement, statement.c_str());
-    sql4 = cStatement;
+    statement4 = "CREATE TABLE UserCart(uniqueID int PRIMARY KEY NOT NULL, username varchar(50), isPurchased boolean);";
+    strcpy(cStatement4, statement4.c_str());
+    sql4 = cStatement4;
     sqlite3_exec(db, sql4, callback, 0, errmsg);
     
-    statement = "CREATE TABLE CartItem(uniqueID int PRIMARY KEY NOT NULL, itemNum int, quantity int, price float, itemID int);";
-    strcpy(cStatement, statement.c_str());
-    sql5 = cStatement;
+    statement5 = "CREATE TABLE CartItem(uniqueID int PRIMARY KEY NOT NULL, itemNum int PRIMARY KEY NOT NULL, quantity int, price float, itemID int);";
+    strcpy(cStatement5, statement5.c_str());
+    sql5 = cStatement5;
     sqlite3_exec(db, sql5, callback, 0, errmsg);
     
     //Populate the DB with default values
-    statement = "INSERT INTO Item (itemID, itemName, cost, category) VALUES ('0001', 'Finish All in 1 Powerball Mega Pack', 13.56, 'Household Items');\
+    statement6 = "INSERT INTO Item (itemID, itemName, cost, category) VALUES ('0001', 'Finish All in 1 Powerball Mega Pack', 13.56, 'Household Items');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0002', 'Kleenex Facial Tissue', 14.98, 'Household Items');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0003', 'Rayovac AA Batteries 20ct', 12.49, 'Household Items');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0004', 'Lysol Disinfecting Wipes 3-pack', 9.97, 'Household Items');\
@@ -76,11 +90,11 @@ void buildDB() {
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0008', 'To Kill a Mockingbird', 8.50, 'Books');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0009', 'Pride and Prejudice', 7.99, 'Books');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0010', 'Animal Farm', 5.95, 'Books');";
-    strcpy(cStatement, statement.c_str());
-    sql6 = cStatement;
+    strcpy(cStatement6, statement6.c_str());
+    sql6 = cStatement6;
     sqlite3_exec(db, sql6, callback, 0, errmsg);
     
-    statement = "INSERT INTO Item (itemID, itemName, cost, category) VALUES('0011', 'Play-Doh 24-Pack of Colors', 14.99, 'Toys');\
+    statement7 = "INSERT INTO Item (itemID, itemName, cost, category) VALUES('0011', 'Play-Doh 24-Pack of Colors', 14.99, 'Toys');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0012', 'Cards Against Humanity', 25.00, 'Toys');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0013', 'Little Tikes 3ft Trampoline', 37.17, 'Toys');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0014', 'Uno Card Game', 4.19, 'Toys');\
@@ -89,12 +103,8 @@ void buildDB() {
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0017', 'Fujifilm INSTAX Mini 8 Instant Camera', 50.99, 'Small Electronics');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0018', 'Ultra Slim 4-Port USB 3.0 Data Hub', 9.99, 'Small Electronics');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0019', 'High-Speed HDMI Cable', 5.49, 'Small Electronics');\
-    INSERT INTO Item (itemID, itemName, cost, category) VALUES('0020', 'SanDisk 64GB microSDXC Card', 19.35, 'Small Electronics');";
-    strcpy(cStatement, statement.c_str());
-    sql7 = cStatement;
-    sqlite3_exec(db, sql7, callback, 0, errmsg);
-    
-    statement = "INSERT INTO Inventory (itemID, quantity) VALUES('0001', 10);\
+    INSERT INTO Item (itemID, itemName, cost, category) VALUES('0020', 'SanDisk 64GB microSDXC Card', 19.35, 'Small Electronics');\
+    INSERT INTO Inventory (itemID, quantity) VALUES('0001', 10);\
     INSERT INTO Inventory (itemID, quantity) VALUES('0002', 10);\
     INSERT INTO Inventory (itemID, quantity) VALUES('0003', 10);\
     INSERT INTO Inventory (itemID, quantity) VALUES('0004', 10);\
@@ -115,9 +125,10 @@ void buildDB() {
     INSERT INTO Inventory (itemID, quantity) VALUES('0019', 10);\
     INSERT INTO Inventory (itemID, quantity) VALUES('0020', 10);\
     INSERT INTO Users (username) VALUES('defaultUser'); ";
-    strcpy(cStatement, statement.c_str());
-    sql8 = cStatement;
-    sqlite3_exec(db, sql8, callback, 0, errmsg);
+    
+    strcpy(cStatement7, statement7.c_str());
+    sql7 = cStatement7;
+    sqlite3_exec(db, sql7, callback, 0, errmsg);
     
     sqlite3_close(db);
 }
