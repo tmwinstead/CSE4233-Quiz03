@@ -8,4 +8,4 @@ newDatabase: buildDB.o
 	./buildDB.o
 
 clean:
-	\rm *.o 
+	\rm *.o *.db
