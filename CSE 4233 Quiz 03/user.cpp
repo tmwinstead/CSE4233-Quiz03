@@ -32,8 +32,9 @@ vector<int> User::getHistory() {
 //  Checks that provided username is in the DB, if not, creates a new entry
 string User::login(string userID) {
     username = userID;
-    
+    cout << "Making DB" << endl;
     Database db;
+    cout << "Update User in DB" << endl;
     string login = db.updateUser(userID);
     
     return login;

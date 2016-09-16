@@ -21,21 +21,27 @@ Cart::Cart() {
 Cart::Cart(User user) {
     username = user.username;
     Database db;
+    cout << "Making DB" << endl;
     uniqueID = db.getNextCart(username);
+    cout << "db.getNextCart" << endl;
     bool purchased = db.isPurchased(uniqueID);
+    cout << "db.isPurchased" << endl;
     if (!purchased) {
+        cout << "Calling Cart(user, uniqueID)" << endl;
         Cart(user, uniqueID);
     }
 }
 
 //  Builds a cart with existing history
 Cart::Cart(User user, int cartID) {
-    
+    cout << "Making DB" << endl;
     Database db;
+    cout << "db.rebuildCart()" << endl;
     Cart cart = db.rebuildCart(user.username, cartID);
     username = cart.username;
     uniqueID = cart.uniqueID;
     numItems = cart.numItems;
+    cout << "Cart made" << endl;
 }
 
 //  Resets a cart object's variables but does not remove from DB

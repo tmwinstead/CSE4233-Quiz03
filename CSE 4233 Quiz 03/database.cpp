@@ -198,19 +198,24 @@ bool Database::isPurchased(int uniqueID) {
 
 string Database::updateUser(string username) {
   sqlite3 *db;
-
+    cout << "malloc for cStatement" << endl;
   char *cStatement = (char *) malloc(sizeof(char)*200);
+    
   char **errmsg;
 
   string statement;
   const char *sql;
   bool exists;
   string login = "Logged in.";
+    cout << "SQL to check if the user exists" << endl;
 
   //SQL statement to check if the user exists; if no, then make it
   statement = "SELECT * FROM User WHERE User.username = " + username + ";";
+    cout << "String copy" << endl;
+
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
+    cout << "sqlite3_open()" << endl;
 
   sqlite3_open("quiz3.db", &db);
 
@@ -287,38 +292,44 @@ bool Database::updateInventory(Cart cart) {
 Cart Database::rebuildCart(string username, int uniqueID) {
   sqlite3 *db;
   Cart cart;
-
+    cout << "Making DB" << endl;
   int iterations;
   int itemID;
   int quantity;
   string statement;
+    cout << "Malloc shit" << endl;
   char *cStatement = (char *) malloc(sizeof(char)*200);
   char **errmsg;
 
   //This converts cartNum into a string to concatenate onto the sql statement.
+    cout << "Converting cart" << endl;
   string strCartNum;
   ostringstream convert;
   convert << uniqueID;
   strCartNum = convert.str();
+    cout << "Cart converted" << endl;
   //********************//
   string strItemNum; //for later use
 
 
   const char *sql;
+    cout << "open sqlite3" << endl;
   sqlite3_open("quiz3.db", &db);
 
   //Get number of items in cart to determine how many iterations the loop runs
-  statement = "SELECT MAX(itemNum) FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username + ";";
+    cout << "Running SQL code" << endl;
+  statement = "SELECT MAX(itemNum) FROM CartItem;";
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
+    cout << "Executing SQL code" << endl;
   iterations = sqlite3_exec(db, sql, callback, 0, errmsg);
-
+    cout << "Worked" << endl;
   for (int i = 0; i <= iterations; i++) {
     //This converts iterations into a string to concatenate onto the sql statement.
     convert << i;
     strItemNum = convert.str();
     //********************//
-
+      cout << "Getting ItemID" << endl;
     //Get itemID
     statement = "SELECT itemID FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username + " AND CartItem.itemNum = " + strItemNum + ";";
     strcpy(cStatement, statement.c_str());

@@ -103,7 +103,7 @@ void cartMenu(int page, Cart cart, User user){
     cout << "Number of items: " << items.size();
     cout << "Total cost: $" << fixed << setprecision(2) << cart.getTotal() << endl;
     cout << "Page " << page+1 << endl;
-    cout << "Type in the number then you can remove from or add more to add to your cart.";
+    cout << "Type in the number then you can remove from or add more to add to your cart." << endl;
     cout << "  0. Back" << endl;
     cout << "  1. Next Page" << endl;
     
