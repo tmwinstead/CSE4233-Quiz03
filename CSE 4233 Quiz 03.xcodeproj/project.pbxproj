@@ -21,7 +21,7 @@
 		BFCFE2881D872FAC002D7E15 /* quiz3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFCFE2871D872FAC002D7E15 /* quiz3.cpp */; };
 		BFCFE28B1D879046002D7E15 /* database.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFCFE2891D879046002D7E15 /* database.cpp */; };
 		BFCFE28D1D885B92002D7E15 /* quiz3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFCFE28C1D885B92002D7E15 /* quiz3.cpp */; };
-		BFCFE2941D8C9884002D7E15 /* makefile in Sources */ = {isa = PBXBuildFile; fileRef = BFCFE2931D8C9884002D7E15 /* makefile */; };
+		BFCFE2971D8C9927002D7E15 /* makefile in Sources */ = {isa = PBXBuildFile; fileRef = BFCFE2961D8C9927002D7E15 /* makefile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,7 +71,7 @@
 		BFCFE2891D879046002D7E15 /* database.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = database.cpp; sourceTree = "<group>"; };
 		BFCFE28A1D879046002D7E15 /* database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = database.h; sourceTree = "<group>"; };
 		BFCFE28C1D885B92002D7E15 /* quiz3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = quiz3.cpp; sourceTree = "<group>"; };
-		BFCFE2931D8C9884002D7E15 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
+		BFCFE2961D8C9927002D7E15 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,7 @@
 				2FA79B871D86F72500BEEB3A /* Classes */,
 				2F0A11591D89BD8300075FF5 /* SQLite3 */,
 				2F0A11511D88BB7B00075FF5 /* Databases */,
-				BFCFE2921D8C9866002D7E15 /* Etc Files */,
+				BFCFE2951D8C9913002D7E15 /* Etc Files */,
 			);
 			path = "CSE 4233 Quiz 03";
 			sourceTree = "<group>";
@@ -172,10 +172,10 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		BFCFE2921D8C9866002D7E15 /* Etc Files */ = {
+		BFCFE2951D8C9913002D7E15 /* Etc Files */ = {
 			isa = PBXGroup;
 			children = (
-				BFCFE2931D8C9884002D7E15 /* makefile */,
+				BFCFE2961D8C9927002D7E15 /* makefile */,
 			);
 			name = "Etc Files";
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 				2F6606CD1D8634B10098E3E7 /* user.cpp in Sources */,
 				2F6606D01D8637F60098E3E7 /* cart.cpp in Sources */,
 				BFCFE28B1D879046002D7E15 /* database.cpp in Sources */,
-				BFCFE2941D8C9884002D7E15 /* makefile in Sources */,
+				BFCFE2971D8C9927002D7E15 /* makefile in Sources */,
 				2FA79B901D87126300BEEB3A /* inventory.cpp in Sources */,
 				2F0A11531D88BBA500075FF5 /* shell.c in Sources */,
 				2FA79B8D1D870FD300BEEB3A /* checkout.cpp in Sources */,
