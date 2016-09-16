@@ -10,27 +10,24 @@
 #include <vector>
 #include <iomanip>
 #include <string>
-#include "item.h"
-#include "admin.h"
-#include "cart.h"
-#include "checkout.h"
-#include "inventory.h"
-#include "user.h"
-#include "database.h"
-
+#include "item.cpp"
+#include "admin.cpp"
+#include "cart.cpp"
+#include "checkout.cpp"
+#include "inventory.cpp"
+#include "user.cpp"
+#include "database.cpp"
 
 using namespace std;
 
-bool mainMenu();
-void cartMenu(int page);
-void historyMenu(int page);
-vector<int> getOldCarts(string username, int start);
-void detailHistoryMenu(int cartID);
+bool mainMenu(Cart cart, User user);
+void cartMenu(int page, Cart cart, User user);
+void historyMenu(int page, Cart cart, User user);
+vector<int> getOldCarts(string username, int start, Cart cart, User user);
+void detailHistoryMenu(int cartID, Cart cart, User user);
 
-User user;
-Cart cart;
 
-vector<Item> getItems(string type, int start){
+vector<Item> getItems(string type, int start, Cart cart, User user){
     vector<int> itemIDs;
     // SQL code to get a list of max of 7 itemIDs WHERE type is type starting after the n-th instance
     vector<Item> items;
@@ -41,7 +38,7 @@ vector<Item> getItems(string type, int start){
     return items;
 }
 
-vector<int> getOldCarts(string username, int start){
+vector<int> getOldCarts(string username, int start, Cart cart, User user){
     vector<int> fullHistory = user.getHistory();
     vector<int> history;
     for (int i = start; i<fullHistory.size() || i+start<start+7 ; i++){
@@ -50,7 +47,7 @@ vector<int> getOldCarts(string username, int start){
     return history;
 }
 
-void inventoryMenu(string name, int page){
+void inventoryMenu(string name, int page, Cart cart, User user){
     
     cout << "" << endl;
     cout << name << endl;
@@ -64,7 +61,7 @@ void inventoryMenu(string name, int page){
     cout << "  2. View Cart (" << numItems << ") $";
     cout << fixed << setprecision(2) << totalPrice << endl;
     
-    vector<Item> items = getItems(name, page*7);
+    vector<Item> items = getItems(name, page*7, cart, user);
     
     for (int i=0; i<7 || i<items.size(); i++){
         cout << "  " << i+3 << ". " << items.at(i).itemName << " ($" << items.at(i).cost << ")" << endl;
@@ -83,18 +80,18 @@ void inventoryMenu(string name, int page){
             break;
             
         case 1:
-            inventoryMenu(name, page+1);
+            inventoryMenu(name, page+1, cart, user);
             break;
             
         case 2:
-            cartMenu(0);
+            cartMenu(0, cart, user);
             break;
             
         default:
             if (choice > items.size()+3){
                 cout << "Not a valid choice. Try again." << endl;
                 cout << "" << endl;
-                cartMenu(page);
+                cartMenu(page, cart, user);
                 break;
             }
             bool thisLoop = true;
@@ -111,7 +108,7 @@ void inventoryMenu(string name, int page){
 
 }
 
-void cartMenu(int page){
+void cartMenu(int page, Cart cart, User user){
     vector<Item> items = cart.itemList;
     cout << "" << endl;
     cout << "Cart #" << cart.uniqueID <<endl;
@@ -145,7 +142,7 @@ void cartMenu(int page){
             break;
             
         case 1:
-            cartMenu(page+1);
+            cartMenu(page+1, cart, user);
             break;
             
         case 2:
@@ -156,7 +153,7 @@ void cartMenu(int page){
             if (choice+page*7 > items.size()){
                 cout << "Not a valid choice. Try again." << endl;
                 cout << "" << endl;
-                cartMenu(page);
+                cartMenu(page, cart, user);
                 break;
             }
             bool thisLoop = true;
@@ -189,14 +186,14 @@ void cartMenu(int page){
                 cart.removeFromCart(items.at(choice-3+page*7), quantity);
             cout << endl;
             cout << endl;
-            cartMenu(page);
+            cartMenu(page, cart, user);
             break;
             
     }
 }
 
-void historyMenu(int page){
-    vector<int> historyCarts = getOldCarts(user.username, page*8);
+void historyMenu(int page, Cart cart, User user){
+    vector<int> historyCarts = getOldCarts(user.username, page*8, cart, user);
     cout << "" << endl;
     cout << "Cart History" << endl;
     cout << "Page " << page+1 << endl;
@@ -221,24 +218,24 @@ void historyMenu(int page){
             break;
             
         case 1:
-            cartMenu(page+1);
+            cartMenu(page+1, cart, user);
             break;
             
         default:
             if (choice > historyCarts.size()+2){
                 cout << "Not a valid choice. Try again." << endl;
                 cout << "" << endl;
-                historyMenu(page);
+                historyMenu(page, cart, user);
                 break;
             }
             cout << "" << endl;
-            detailHistoryMenu(historyCarts.at(choice-2));
-            historyMenu(page);
+            detailHistoryMenu(historyCarts.at(choice-2), cart, user);
+            historyMenu(page, cart, user);
             break;
     }
 }
 
-void detailHistoryMenu(int cartID){
+void detailHistoryMenu(int cartID, Cart cart, User user){
     Cart historyCart = Cart(user, cartID);
     cout << "Cart Hisotory" << endl;
     cout << "Cart #" << cartID << endl;
@@ -257,7 +254,7 @@ void detailHistoryMenu(int cartID){
     cout << endl;
 }
 
-bool mainMenu(){
+bool mainMenu(Cart cart, User user){
     bool keepGoing = true;
     cout << "" << endl;
     cout << "Main Menu" << endl;
@@ -279,11 +276,11 @@ bool mainMenu(){
     };
     switch (choice) {
         case 1:
-            historyMenu(0);
+            historyMenu(0, cart, user);
             break;
             
         case 2:
-            cartMenu(0);
+            cartMenu(0, cart, user);
             break;
             
         case 3:
@@ -291,21 +288,24 @@ bool mainMenu(){
             break;
             
         case 4:
-            inventoryMenu("Household Items", 0);
+            inventoryMenu("Household Items", 0, cart, user);
             break;
             
         case 5:
-            inventoryMenu("Books", 0);
+            inventoryMenu("Books", 0, cart, user);
             break;
             
         case 6:
-            inventoryMenu("Toys", 0);
+            inventoryMenu("Toys", 0, cart, user);
             break;
             
         case 7:
-            inventoryMenu("Small Electronics", 0);
+            inventoryMenu("Small Electronics", 0, cart, user);
             break;
     }
+    if (keepGoing)
+        mainMenu(cart, user);
+    
     return keepGoing;
 }
 
@@ -318,12 +318,19 @@ int main(int argc, const char * argv[])
         return 0;
     }
     
-    user = User(argv[1]);
-    cart = Cart(user);
+    string username = argv[1];
+    cout << "Making User" << endl;
+    User user =  User();
+    cout << "Checking Username" << endl;
+    user.login(username);
+    cout << "Making Cart" << endl;
+
+    Cart cart =  Cart(user);
     
     bool keepGoing = true;
     while(keepGoing){
-        keepGoing = mainMenu();
+        keepGoing = mainMenu(cart, user);
     }
+    
     return 0;
 }

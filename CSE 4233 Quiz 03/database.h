@@ -28,7 +28,7 @@ public:
     Item getItem(int userID);
     
     Database();
-    ~Database();
+    //~Database();
     
     string updateUser(string username);
     int getNextCart(string username);

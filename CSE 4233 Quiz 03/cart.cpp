@@ -24,7 +24,7 @@ Cart::Cart(User user) {
     uniqueID = db.getNextCart(username);
     bool purchased = db.isPurchased(uniqueID);
     if (!purchased) {
-        Cart(username, uniqueID);
+        Cart(user, uniqueID);
     }
 }
 
