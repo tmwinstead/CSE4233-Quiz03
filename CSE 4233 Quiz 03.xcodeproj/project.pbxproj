@@ -10,14 +10,7 @@
 		2F0A11531D88BBA500075FF5 /* shell.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A11521D88BBA500075FF5 /* shell.c */; };
 		2F0A11571D88BBC700075FF5 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A11541D88BBC700075FF5 /* sqlite3.c */; };
 		2F43C0A41D8C95970015F097 /* buildDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F43C0A31D8C95970015F097 /* buildDB.cpp */; };
-		2F6606CD1D8634B10098E3E7 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6606CB1D8634B10098E3E7 /* user.cpp */; };
-		2F6606D01D8637F60098E3E7 /* cart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6606CE1D8637F60098E3E7 /* cart.cpp */; };
-		2FA79B861D86F6FD00BEEB3A /* item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FA79B841D86F6FD00BEEB3A /* item.cpp */; };
-		2FA79B8A1D870EE700BEEB3A /* admin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FA79B881D870EE700BEEB3A /* admin.cpp */; };
-		2FA79B8D1D870FD300BEEB3A /* checkout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FA79B8B1D870FD300BEEB3A /* checkout.cpp */; };
-		2FA79B901D87126300BEEB3A /* inventory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FA79B8E1D87126300BEEB3A /* inventory.cpp */; };
 		BFCFE2881D872FAC002D7E15 /* quiz3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFCFE2871D872FAC002D7E15 /* quiz3.cpp */; };
-		BFCFE28B1D879046002D7E15 /* database.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFCFE2891D879046002D7E15 /* database.cpp */; };
 		BFCFE28D1D885B92002D7E15 /* quiz3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFCFE28C1D885B92002D7E15 /* quiz3.cpp */; };
 		BFCFE2971D8C9927002D7E15 /* makefile in Sources */ = {isa = PBXBuildFile; fileRef = BFCFE2961D8C9927002D7E15 /* makefile */; };
 /* End PBXBuildFile section */
@@ -51,21 +44,7 @@
 		2F43C0961D8C8C930015F097 /* Build DB */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Build DB"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F43C0A31D8C95970015F097 /* buildDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildDB.cpp; sourceTree = "<group>"; };
 		2F6606C11D8633EB0098E3E7 /* CSE 4233 Quiz 03 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CSE 4233 Quiz 03"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F6606CB1D8634B10098E3E7 /* user.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user.cpp; sourceTree = "<group>"; };
-		2F6606CC1D8634B10098E3E7 /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
-		2F6606CE1D8637F60098E3E7 /* cart.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cart.cpp; sourceTree = "<group>"; };
-		2F6606CF1D8637F60098E3E7 /* cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cart.h; sourceTree = "<group>"; };
-		2FA79B841D86F6FD00BEEB3A /* item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = item.cpp; sourceTree = "<group>"; };
-		2FA79B851D86F6FD00BEEB3A /* item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = item.h; sourceTree = "<group>"; };
-		2FA79B881D870EE700BEEB3A /* admin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = admin.cpp; sourceTree = "<group>"; };
-		2FA79B8B1D870FD300BEEB3A /* checkout.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = checkout.cpp; sourceTree = "<group>"; };
-		2FA79B8C1D870FD300BEEB3A /* checkout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = checkout.h; sourceTree = "<group>"; };
-		2FA79B8E1D87126300BEEB3A /* inventory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = inventory.cpp; sourceTree = "<group>"; };
-		2FA79B8F1D87126300BEEB3A /* inventory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inventory.h; sourceTree = "<group>"; };
-		2FE8532E1D871E93005AB2B6 /* admin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = admin.h; sourceTree = "<group>"; };
 		BFCFE2871D872FAC002D7E15 /* quiz3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = quiz3.cpp; sourceTree = "<group>"; };
-		BFCFE2891D879046002D7E15 /* database.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = database.cpp; sourceTree = "<group>"; };
-		BFCFE28A1D879046002D7E15 /* database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = database.h; sourceTree = "<group>"; };
 		BFCFE28C1D885B92002D7E15 /* quiz3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = quiz3.cpp; sourceTree = "<group>"; };
 		BFCFE2961D8C9927002D7E15 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,20 +118,6 @@
 		2FA79B871D86F72500BEEB3A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2FE8532E1D871E93005AB2B6 /* admin.h */,
-				2FA79B881D870EE700BEEB3A /* admin.cpp */,
-				2F6606CF1D8637F60098E3E7 /* cart.h */,
-				2F6606CE1D8637F60098E3E7 /* cart.cpp */,
-				2FA79B8C1D870FD300BEEB3A /* checkout.h */,
-				2FA79B8B1D870FD300BEEB3A /* checkout.cpp */,
-				BFCFE28A1D879046002D7E15 /* database.h */,
-				BFCFE2891D879046002D7E15 /* database.cpp */,
-				2FA79B8F1D87126300BEEB3A /* inventory.h */,
-				2FA79B8E1D87126300BEEB3A /* inventory.cpp */,
-				2FA79B851D86F6FD00BEEB3A /* item.h */,
-				2FA79B841D86F6FD00BEEB3A /* item.cpp */,
-				2F6606CC1D8634B10098E3E7 /* user.h */,
-				2F6606CB1D8634B10098E3E7 /* user.cpp */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -249,19 +214,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F6606CD1D8634B10098E3E7 /* user.cpp in Sources */,
-				2F6606D01D8637F60098E3E7 /* cart.cpp in Sources */,
-				BFCFE28B1D879046002D7E15 /* database.cpp in Sources */,
 				BFCFE2971D8C9927002D7E15 /* makefile in Sources */,
-				2FA79B901D87126300BEEB3A /* inventory.cpp in Sources */,
 				2F0A11531D88BBA500075FF5 /* shell.c in Sources */,
-				2FA79B8D1D870FD300BEEB3A /* checkout.cpp in Sources */,
 				2F43C0A41D8C95970015F097 /* buildDB.cpp in Sources */,
 				BFCFE28D1D885B92002D7E15 /* quiz3.cpp in Sources */,
 				BFCFE2881D872FAC002D7E15 /* quiz3.cpp in Sources */,
-				2FA79B861D86F6FD00BEEB3A /* item.cpp in Sources */,
 				2F0A11571D88BBC700075FF5 /* sqlite3.c in Sources */,
-				2FA79B8A1D870EE700BEEB3A /* admin.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
