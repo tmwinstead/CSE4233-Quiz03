@@ -13,7 +13,6 @@
 #include "item.cpp"
 #include "cart.cpp"
 #include "checkout.cpp"
-#include "inventory.cpp"
 #include "user.cpp"
 #include "database.cpp"
 
