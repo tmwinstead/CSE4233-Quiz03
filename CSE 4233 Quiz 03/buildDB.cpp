@@ -38,26 +38,31 @@ void buildDB() {
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
     
+    cStatement = (char *) malloc(sizeof(char)*1000);
     statement = "CREATE TABLE Item(itemID varchar(50) PRIMARY KEY NOT NULL, itemName varchar(100), stockQuantity int, cost float, category varchar(50));";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
     
+    cStatement = (char *) malloc(sizeof(char)*1000);
     statement = "CREATE TABLE Inventory(itemID int, quantity int);";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
     
+    cStatement = (char *) malloc(sizeof(char)*1000);
     statement = "CREATE TABLE UserCart(isPurchased boolean, uniqueID int, username varchar(50));";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
     
+    cStatement = (char *) malloc(sizeof(char)*1000);
     statement = "CREATE TABLE CartItem(uniqueID int PRIMARY KEY NOT NULL, itemNum int, quantity int, price float, itemID int);";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
 
+    cStatement = (char *) malloc(sizeof(char)*1000);
     //Populate the DB with default values
     statement = "INSERT INTO Item (itemID, itemName, cost, category) VALUES ('0001', 'Finish All in 1 Powerball Mega Pack', 13.56, 'Household Items');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0002', 'Kleenex Facial Tissue', 14.98, 'Household Items');\
@@ -73,6 +78,7 @@ void buildDB() {
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
     
+    cStatement = (char *) malloc(sizeof(char)*1000);
     statement = "INSERT INTO Item (itemID, itemName, cost, category) VALUES('0011', 'Play-Doh 24-Pack of Colors', 14.99, 'Toys');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0012', 'Cards Against Humanity', 25.00, 'Toys');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0013', 'Little Tikes 3ft Trampoline', 37.17, 'Toys');\
@@ -87,6 +93,7 @@ void buildDB() {
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
     
+    cStatement = (char *) malloc(sizeof(char)*1000);
     statement = "INSERT INTO Inventory (itemID, quantity) VALUES('0001', 10);\
     INSERT INTO Inventory (itemID, quantity) VALUES('0002', 10);\
     INSERT INTO Inventory (itemID, quantity) VALUES('0003', 10);\

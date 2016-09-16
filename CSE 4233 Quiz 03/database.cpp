@@ -388,9 +388,10 @@ vector<Item> Database::categoryLookup(string category) {
   sqlite3_close(db);
 
   return items;
+
 }
 
-void addToUserCart(int uniqueID, string username) {
+void Database::addToUserCart(int uniqueID, string username) {
   sqlite3 *db;
 
   char *cStatement = (char *)malloc(sizeof(char) * 200);
@@ -414,7 +415,7 @@ void addToUserCart(int uniqueID, string username) {
   sqlite3_close(db);
 }
 
-void addToCartItem(int uniqueID, int itemNum, int quantity, float price, int itemID) {
+void Database::addToCartItem(int uniqueID, int itemNum, int quantity, float price, int itemID) {
   sqlite3 *db;
 
   char *cStatement = (char *)malloc(sizeof(char) * 200);
@@ -450,7 +451,7 @@ void addToCartItem(int uniqueID, int itemNum, int quantity, float price, int ite
   sqlite3_close(db);
 }
 
-void removeFromCartItem(int uniqueID, int itemNum, int quantity, float price, int itemID); {
+void Database::removeFromCartItem(int uniqueID, int itemNum, int quantity, float price, int itemID) {
   sqlite3 *db;
 
   char *cStatement = (char *)malloc(sizeof(char) * 200);
