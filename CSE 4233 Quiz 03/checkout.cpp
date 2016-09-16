@@ -7,6 +7,7 @@
 //
 
 #include "checkout.h"
+#include "database.h"
 
 //  Creates a checkout object with initialized variables
 Checkout::Checkout() {
@@ -34,22 +35,8 @@ void Checkout::addShippingAddress() {
 
 //  Updates the inventory at the end of checkout
 bool Checkout::updateInventory(Cart cart) {
-    bool purchaseSuccess = true;
-    
-    
-    
-    
-    ////////*********************TOOOOOO DOOOOOOOOOOOO*************/////////
-    //  USER NEEDS NEW CART
-    
-    
-    
-    
-    //  SQL to update the inventory
-    //  Cout inventory of each purchased item before and after update
-    //  If inventory update is successful, return purchase successful
-    //  If inventory update fails, return purchase unsuccessful
-    //  Change purchaseSuccess to false if fail
+    Database db;
+    bool purchaseSuccess = db.updateInventory(cart);
     
     return purchaseSuccess;
 }
