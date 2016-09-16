@@ -35,7 +35,7 @@ public:
     bool isPurchased(int uniqueID);
     bool updateInventory(Cart cart);
     Cart rebuildCart(string username, int uniqueID);
-    vector<Item> Database::categoryLookup(string category);
+    vector<Item> categoryLookup(string category);
 };
 
 #endif

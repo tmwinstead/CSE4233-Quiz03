@@ -1,5 +1,5 @@
 //
-//  main.cpp
+//  quiz3.cpp
 //  CSE 4233 Quiz 03
 //
 //  Created by Jimmy Bailey on 9/12/16.
@@ -26,18 +26,6 @@ void historyMenu(int page, Cart cart, User user);
 vector<int> getOldCarts(string username, int start, Cart cart, User user);
 void detailHistoryMenu(int cartID, Cart cart, User user);
 
-
-vector<Item> getItems(string type, int start, Cart cart, User user){
-    vector<int> itemIDs;
-    // SQL code to get a list of max of 7 itemIDs WHERE type is type starting after the n-th instance
-    vector<Item> items;
-    for (int i = 0; i<itemIDs.size(); i++){
-        Item* newItem = new Item(itemIDs.at(i));
-        items.push_back(*newItem);
-    }
-    return items;
-}
-
 vector<int> getOldCarts(string username, int start, Cart cart, User user){
     vector<int> fullHistory = user.getHistory();
     vector<int> history;
@@ -61,9 +49,10 @@ void inventoryMenu(string name, int page, Cart cart, User user){
     cout << "  2. View Cart (" << numItems << ") $";
     cout << fixed << setprecision(2) << totalPrice << endl;
     
-    vector<Item> items = getItems(name, page*7, cart, user);
+    Database db;
+    vector<Item> items = db.categoryLookup(name);
     
-    for (int i=0; i<7 || i<items.size(); i++){
+    for (int i=0; i<7 || i+page*7<items.size(); i++){
         cout << "  " << i+3 << ". " << items.at(i).itemName << " ($" << items.at(i).cost << ")" << endl;
     };
     
@@ -105,7 +94,6 @@ void inventoryMenu(string name, int page, Cart cart, User user){
             cart.addToCart(items.at(choice-3).itemID, quantity);
             break;
     }
-
 }
 
 void cartMenu(int page, Cart cart, User user){
