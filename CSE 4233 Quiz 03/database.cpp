@@ -70,25 +70,25 @@ Item Database::getItem(int itemID) {
   for (int i = 0; i < 4; i++) {
     switch (i) {
     case 0:
-      itemUID = "SELECT stockQuantity FROM item WHERE item.itemID = " + itemUID;
+      itemUID = "SELECT stockQuantity FROM item WHERE item.itemID = " + itemUID + ";";
       strcpy(cItemUID, itemUID.c_str());
       sql = cItemUID;
       itemInfo.stockQuantity = sqlite3_exec(db, sql, callback, 0, errmsg);
       break;
     case 1:
-      itemUID = "SELECT cost FROM item WHERE item.itemID = " + itemUID;
+      itemUID = "SELECT cost FROM item WHERE item.itemID = " + itemUID + ";";
       strcpy(cItemUID, itemUID.c_str());
       sql = cItemUID;
       itemInfo.cost = sqlite3_exec(db, sql, callback, 0, errmsg);
       break;
     case 2:
-      itemUID = "SELECT itemName FROM item WHERE item.itemID = " + itemUID;
+      itemUID = "SELECT itemName FROM item WHERE item.itemID = " + itemUID + ";";
       strcpy(cItemUID, itemUID.c_str());
       sql = cItemUID;
       itemInfo.itemName = sqlite3_exec(db, sql, callback, 0, errmsg);
       break;
     case 3:
-      itemUID = "SELECT category FROM item WHERE item.itemID = " + itemUID;
+      itemUID = "SELECT category FROM item WHERE item.itemID = " + itemUID + ";";
       strcpy(cItemUID, itemUID.c_str());
       sql = cItemUID;
       itemInfo.category = sqlite3_exec(db, sql, callback, 0, errmsg);
@@ -116,7 +116,7 @@ int Database::getNextCart(string username) {
 
   const char *sql;
 
-  statement = "SELECT MAX(uniqueID) FROM UserCart WHERE UserCart.username = " + username;
+  statement = "SELECT MAX(uniqueID) FROM UserCart WHERE UserCart.username = " + username + ";";
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
 
@@ -132,7 +132,7 @@ int Database::getNextCart(string username) {
   strCartNum = convert.str();
   //********************//
 
-  statement = "SELECT isPurchased FROM UserCart WHERE UserCart.uniqueID = " + strCartNum;
+  statement = "SELECT isPurchased FROM UserCart WHERE UserCart.uniqueID = " + strCartNum + ";";
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
   isPurchased = sqlite3_exec(db, sql, callback, 0, errmsg);
@@ -152,7 +152,7 @@ int Database::getNextCart(string username) {
     strCartNum = convert.str();
     //********************//
 
-    statement = "INSERT INTO UserCart VALUES (" + strCartNum + "," + username + ",FALSE)";
+    statement = "INSERT INTO UserCart VALUES (" + strCartNum + "," + username + ",FALSE);";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
 
@@ -183,7 +183,7 @@ bool Database::isPurchased(int uniqueID) {
   strCartNum = convert.str();
   //********************//
 
-  statement = "SELECT isPurchased FROM UserCart WHERE UserCart.uniqueID = " + strCartNum;
+  statement = "SELECT isPurchased FROM UserCart WHERE UserCart.uniqueID = " + strCartNum + ";";
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
 
@@ -208,7 +208,7 @@ string Database::updateUser(string username) {
   string login = "Logged in.";
 
   //SQL statement to check if the user exists; if no, then make it
-  statement = "SELECT * FROM User WHERE User.username = " + username;
+  statement = "SELECT * FROM User WHERE User.username = " + username + ";";
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
 
@@ -216,7 +216,7 @@ string Database::updateUser(string username) {
 
   exists = sqlite3_exec(db, sql, callback, 0, errmsg);
   if (!exists) {
-    statement = "INSERT INTO User VALUES (" + username + ")";
+    statement = "INSERT INTO User VALUES (" + username + ");";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
@@ -250,7 +250,7 @@ bool Database::updateInventory(Cart cart) {
     strItemID = convert.str();
     //********************//
 
-    statement = "UPDATE Inventory SET quantity = " + newQuantity + " WHERE Inventory.itemID = " + strItemID;
+    statement = "UPDATE Inventory SET quantity = " + newQuantity + " WHERE Inventory.itemID = " + strItemID + ";";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
 
@@ -273,7 +273,7 @@ bool Database::updateInventory(Cart cart) {
   convert << cart.uniqueID;
   strCartNum = convert.str();
   //********************//
-  statement = "UPDATE UserCart SET isPurchased = TRUE WHERE UserCart.uniqueID = " + strCartNum;
+  statement = "UPDATE UserCart SET isPurchased = TRUE WHERE UserCart.uniqueID = " + strCartNum + ";";
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
   sqlite3_exec(db, sql, callback, 0, errmsg);
@@ -308,7 +308,7 @@ Cart Database::rebuildCart(string username, int uniqueID) {
   sqlite3_open("quiz3.db", &db);
 
   //Get number of items in cart to determine how many iterations the loop runs
-  statement = "SELECT MAX(itemNum) FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username;
+  statement = "SELECT MAX(itemNum) FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username + ";";
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
   iterations = sqlite3_exec(db, sql, callback, 0, errmsg);
@@ -320,12 +320,12 @@ Cart Database::rebuildCart(string username, int uniqueID) {
     //********************//
 
     //Get itemID
-    statement = "SELECT itemID FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username + " AND CartItem.itemNum = " + strItemNum;
+    statement = "SELECT itemID FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username + " AND CartItem.itemNum = " + strItemNum + ";";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     itemID = sqlite3_exec(db, sql, callback, 0, errmsg);
     //Get quantity
-    statement = "SELECT quantity FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username + " AND CartItem.itemNum = " + strItemNum;
+    statement = "SELECT quantity FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username + " AND CartItem.itemNum = " + strItemNum + ";";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     quantity = sqlite3_exec(db, sql, callback, 0, errmsg);
@@ -352,7 +352,7 @@ vector<Item> Database::categoryLookup(string category) {
   sqlite3_open("quiz3.db", &db);
 
   //Get number of items in category to determine how many iterations the loop runs
-  statement = "SELECT COUNT(*) FROM Item WHERE Item.category= " + category;
+  statement = "SELECT COUNT(*) FROM Item WHERE Item.category= " + category + ";";
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
   iterations = sqlite3_exec(db, sql, callback, 0, errmsg);
@@ -366,17 +366,17 @@ vector<Item> Database::categoryLookup(string category) {
     Item item = new Item;
     item.category = category;
 
-    statement = "SELECT itemID FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum;
+    statement = "SELECT itemID FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum + ";";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     item.itemID = sqlite3_exec(db, sql, callback, 0, errmsg);
 
-    statement = "SELECT cost FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum;
+    statement = "SELECT cost FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum + ";";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     item.cost = sqlite3_exec(db, sql, callback, 0, errmsg);
 
-    statement = "SELECT quantity FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum;
+    statement = "SELECT quantity FROM Item WHERE Item.category = " + category + " AND Item.itemNum = " + strItemNum + ";";
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     item.stockQuantity = sqlite3_exec(db, sql, callback, 0, errmsg);
