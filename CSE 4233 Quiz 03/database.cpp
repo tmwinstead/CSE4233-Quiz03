@@ -204,8 +204,8 @@ string Database::updateUser(string username) {
 
   string statement;
   const char *sql;
-  void exists;
-  string login = "Logged in."
+  bool exists;
+  string login = "Logged in.";
 
   //SQL statement to check if the user exists; if no, then make it
   statement = "SELECT * FROM User WHERE User.username = " + username;
@@ -220,7 +220,7 @@ string Database::updateUser(string username) {
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
-    login = "User created and logged in."
+    login = "User created and logged in.";
   }
   
   sqlite3_close(db);
@@ -228,7 +228,7 @@ string Database::updateUser(string username) {
   return login;
 }
 
-void Database::updateInventory(Cart cart) {
+bool Database::updateInventory(Cart cart) {
   sqlite3 *db;
 
   char *cStatement;
@@ -239,12 +239,12 @@ void Database::updateInventory(Cart cart) {
   string newQuantity;
   string strItemID;
   string strCartNum;
+  ostringstream convert;
 
   sqlite3_open("quiz3.db", &db);
 
   for (int i = 0; i < cart.itemList.size(); i++) {
     //This converts itemID into a string to concatenate onto the sql statement.
-    ostringstream convert;
     convert << cart.itemList.at(i).itemID;
     strItemID = convert.str();
     //********************//
@@ -258,16 +258,17 @@ void Database::updateInventory(Cart cart) {
     cout << cart.itemList.at(i).stockQuantity; //New q
 
     //This converts the item quantity into a string to concatenate onto the sql statement.
-    ostringstream convert;
     convert << cart.itemList.at(i).stockQuantity;
     newQuantity = convert.str();
     //********************//
 
     sqlite3_exec(db, sql, callback, 0, errmsg);
+    if (SQLITE_OK) {
+      bool success = true;
+    }
   }
 
   //This converts cartNum into a string to concatenate onto the sql statement.
-  ostringstream convert;
   convert << cart.uniqueID;
   strCartNum = convert.str();
   //********************//
@@ -277,6 +278,9 @@ void Database::updateInventory(Cart cart) {
   sqlite3_exec(db, sql, callback, 0, errmsg);
 
   sqlite3_close(db);
+
+  if (success) { return success; }
+  else { return false; }
 }
 
 Cart Database::rebuildCart(string username, int uniqueID) {
@@ -293,7 +297,7 @@ Cart Database::rebuildCart(string username, int uniqueID) {
   //This converts cartNum into a string to concatenate onto the sql statement.
   string strCartNum;
   ostringstream convert;
-  convert << cartNum;
+  convert << uniqueID;
   strCartNum = convert.str();
   //********************//
   string strItemNum; //for later use
@@ -310,19 +314,17 @@ Cart Database::rebuildCart(string username, int uniqueID) {
 
   for (int i = 0; i <= iterations; i++) {
     //This converts iterations into a string to concatenate onto the sql statement.
-    //Initialized out of forLoop
-    ostringstream convert;
     convert << iterations;
     strItemNum = convert.str();
     //********************//
 
     //Get itemID
-    statement = "SELECT itemID FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username " AND CartItem.itemNum = " + strItemNum;
+    statement = "SELECT itemID FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username + " AND CartItem.itemNum = " + strItemNum;
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     itemID = sqlite3_exec(db, sql, callback, 0, errmsg);
     //Get quantity
-    statement = "SELECT quantity FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username " AND CartItem.itemNum = " + strItemNum;
+    statement = "SELECT quantity FROM CartItem WHERE CartItem.uniqueID = " + strCartNum + " AND CartItem.username = " + username + " AND CartItem.itemNum = " + strItemNum;
     strcpy(cStatement, statement.c_str());
     sql = cStatement;
     quantity = sqlite3_exec(db, sql, callback, 0, errmsg);

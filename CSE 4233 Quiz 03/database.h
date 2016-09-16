@@ -12,6 +12,7 @@
 #include "item.h"
 #include "user.h"
 #include "cart.h"
+#include "checkout.h"
 
 #include <iostream>
 #include <string>
@@ -29,7 +30,6 @@ public:
     Database();
     ~Database();
     
-    //string getUser(string username);
     string updateUser(string username);
     int getNextCart(string username);
     bool isPurchased(int uniqueID);
