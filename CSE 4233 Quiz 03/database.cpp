@@ -211,9 +211,9 @@ string Database::updateUser(string username) {
   statement = "SELECT * FROM User WHERE User.username = " + username + ";";
   strcpy(cStatement, statement.c_str());
   sql = cStatement;
-
+    
   sqlite3_open("quiz3.db", &db);
-
+    
   exists = sqlite3_exec(db, sql, callback, 0, errmsg);
   if (!exists) {
     statement = "INSERT INTO User VALUES (" + username + ");";
