@@ -62,7 +62,7 @@ void buildDB() {
     sql = cStatement;
     sqlite3_exec(db, sql, callback, 0, errmsg);
     
-    statement2 = "CREATE TABLE Item(itemID varchar(50) PRIMARY KEY NOT NULL, itemName varchar(100), stockQuantity int, cost float, category varchar(50));";
+    statement2 = "CREATE TABLE Item(itemID varchar(50) PRIMARY KEY NOT NULL, itemName varchar(100), cost float, category varchar(50));";
     strcpy(cStatement2, statement2.c_str());
     sql2 = cStatement2;
     sqlite3_exec(db, sql2, callback, 0, errmsg);
