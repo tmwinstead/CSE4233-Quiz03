@@ -3,7 +3,6 @@
 //  CSE 4233 Quiz 03
 //
 //  Created by Jimmy Bailey on 9/12/16.
-//  Copyright © 2016 Tyler Winstead. All rights reserved.
 //
 
 #include <iostream>
