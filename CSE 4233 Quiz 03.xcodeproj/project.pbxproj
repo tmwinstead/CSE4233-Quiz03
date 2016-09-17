@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F0A11571D88BBC700075FF5 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F0A11541D88BBC700075FF5 /* sqlite3.c */; };
 		2F43C0A41D8C95970015F097 /* buildDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F43C0A31D8C95970015F097 /* buildDB.cpp */; };
-		2F43C0AE1D8CBBF40015F097 /* buildDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F43C0AD1D8CBBF40015F097 /* buildDB.cpp */; };
 		2F43C0B31D8CBC320015F097 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F43C0B21D8CBC320015F097 /* libsqlite3.dylib */; };
+		2F43C0B51D8CBFC90015F097 /* buildDB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F43C0B41D8CBFC90015F097 /* buildDB.cpp */; };
 		2F6606CD1D8634B10098E3E7 /* user.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6606CB1D8634B10098E3E7 /* user.cpp */; };
 		2F6606D01D8637F60098E3E7 /* cart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F6606CE1D8637F60098E3E7 /* cart.cpp */; };
 		2FA79B861D86F6FD00BEEB3A /* item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2FA79B841D86F6FD00BEEB3A /* item.cpp */; };
@@ -47,8 +47,8 @@
 		2F0A11551D88BBC700075FF5 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
 		2F43C0A31D8C95970015F097 /* buildDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildDB.cpp; sourceTree = "<group>"; };
 		2F43C0AB1D8CBBF40015F097 /* Build DB */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Build DB"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F43C0AD1D8CBBF40015F097 /* buildDB.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = buildDB.cpp; sourceTree = "<group>"; };
 		2F43C0B21D8CBC320015F097 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
+		2F43C0B41D8CBFC90015F097 /* buildDB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buildDB.cpp; sourceTree = "<group>"; };
 		2F6606C11D8633EB0098E3E7 /* CSE 4233 Quiz 03 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CSE 4233 Quiz 03"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F6606CB1D8634B10098E3E7 /* user.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = user.cpp; sourceTree = "<group>"; };
 		2F6606CC1D8634B10098E3E7 /* user.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = user.h; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 		2F43C0AC1D8CBBF40015F097 /* Build DB */ = {
 			isa = PBXGroup;
 			children = (
-				2F43C0AD1D8CBBF40015F097 /* buildDB.cpp */,
+				2F43C0B41D8CBFC90015F097 /* buildDB.cpp */,
 			);
 			path = "Build DB";
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F43C0AE1D8CBBF40015F097 /* buildDB.cpp in Sources */,
+				2F43C0B51D8CBFC90015F097 /* buildDB.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
