@@ -31,6 +31,7 @@ void buildDB() {
     string statement5;
     string statement6;
     string statement7;
+    string statement8;
     
     const char *sql;
     const char *sql2;
@@ -39,6 +40,7 @@ void buildDB() {
     const char *sql5;
     const char *sql6;
     const char *sql7;
+    const char *sql8;
     
     char *cStatement = (char *) malloc(sizeof(char)*1000);
     char *cStatement2 = (char *) malloc(sizeof(char)*1000);
@@ -47,6 +49,7 @@ void buildDB() {
     char *cStatement5 = (char *) malloc(sizeof(char)*1000);
     char *cStatement6 = (char *) malloc(sizeof(char)*1000);
     char *cStatement7 = (char *) malloc(sizeof(char)*1000);
+    char *cStatement8 = (char *) malloc(sizeof(char)*1000);
     
     char **errmsg;
     
@@ -74,7 +77,7 @@ void buildDB() {
     sql4 = cStatement4;
     sqlite3_exec(db, sql4, callback, 0, errmsg);
     
-    statement5 = "CREATE TABLE CartItem(uniqueID int PRIMARY KEY NOT NULL, itemNum int PRIMARY KEY NOT NULL, quantity int, price float, itemID int);";
+    statement5 = "CREATE TABLE CartItem(uniqueID int, itemNum int, quantity int, price float, itemID int, CONSTRAINT PK_D PRIMARY KEY (uniqueID, itemNum));";
     strcpy(cStatement5, statement5.c_str());
     sql5 = cStatement5;
     sqlite3_exec(db, sql5, callback, 0, errmsg);
@@ -103,8 +106,13 @@ void buildDB() {
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0017', 'Fujifilm INSTAX Mini 8 Instant Camera', 50.99, 'Small Electronics');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0018', 'Ultra Slim 4-Port USB 3.0 Data Hub', 9.99, 'Small Electronics');\
     INSERT INTO Item (itemID, itemName, cost, category) VALUES('0019', 'High-Speed HDMI Cable', 5.49, 'Small Electronics');\
-    INSERT INTO Item (itemID, itemName, cost, category) VALUES('0020', 'SanDisk 64GB microSDXC Card', 19.35, 'Small Electronics');\
-    INSERT INTO Inventory (itemID, quantity) VALUES('0001', 10);\
+    INSERT INTO Item (itemID, itemName, cost, category) VALUES('0020', 'SanDisk 64GB microSDXC Card', 19.35, 'Small Electronics');";
+    
+    strcpy(cStatement7, statement7.c_str());
+    sql7 = cStatement7;
+    sqlite3_exec(db, sql7, callback, 0, errmsg);
+    
+    statement8 = "INSERT INTO Inventory (itemID, quantity) VALUES('0001', 10);\
     INSERT INTO Inventory (itemID, quantity) VALUES('0002', 10);\
     INSERT INTO Inventory (itemID, quantity) VALUES('0003', 10);\
     INSERT INTO Inventory (itemID, quantity) VALUES('0004', 10);\
@@ -124,11 +132,11 @@ void buildDB() {
     INSERT INTO Inventory (itemID, quantity) VALUES('0018', 10);\
     INSERT INTO Inventory (itemID, quantity) VALUES('0019', 10);\
     INSERT INTO Inventory (itemID, quantity) VALUES('0020', 10);\
-    INSERT INTO Users (username) VALUES('defaultUser'); ";
+    INSERT INTO Users (username) VALUES('defaultUser');";
     
-    strcpy(cStatement7, statement7.c_str());
-    sql7 = cStatement7;
-    sqlite3_exec(db, sql7, callback, 0, errmsg);
+    strcpy(cStatement8, statement8.c_str());
+    sql8 = cStatement8;
+    sqlite3_exec(db, sql8, callback, 0, errmsg);
     
     sqlite3_close(db);
 }
