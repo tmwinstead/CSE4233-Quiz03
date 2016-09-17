@@ -305,11 +305,8 @@ int main(int argc, const char * argv[])
     }
     
     string username = argv[1];
-    cout << "Making User" << endl;
     User user =  User();
-    cout << "Checking Username" << endl;
     user.login(username);
-    cout << "Making Cart" << endl;
 
     Cart cart =  Cart(user);
     
